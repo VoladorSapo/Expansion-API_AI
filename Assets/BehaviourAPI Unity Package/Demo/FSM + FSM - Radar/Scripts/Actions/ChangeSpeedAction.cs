@@ -25,7 +25,7 @@ namespace BehaviourAPI.UnityToolkit.Demos
         public override void Start()
         {
             var s = baseSpeed + Random.Range(minAddedSpeed, maxAddedSpeed) + baseSpeed;
-            context.Rigidbody.velocity = context.Transform.forward * s;
+            context.Rigidbody.linearVelocity = context.Transform.forward * s;
         }
 
         public override Status Update()

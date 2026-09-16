@@ -105,7 +105,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             m_ExtensionContainer = this.Q(k_ExtensionContainer);
             m_StatusBorder = this.Q(k_Status);
             m_Details = this.Q(k_DetailsDiv);
-
+            
             m_ExtensionToggle.RegisterValueChangedCallback(OnChangeExtensionToggle);
 
             nodeProperty = property;
@@ -447,6 +447,8 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                     (InputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendAction("Disconnect all output edges.", _ => DisconnectAllOutput(),
                     (OutputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendAction("Duplicate.", _ => Duplicate(),
+                (InputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendSeparator();
             }
 
@@ -472,6 +474,11 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
         {
             DisconnectAllInput();
             DisconnectAllOutput();
+        }
+        private void Duplicate()
+        {
+            graphView.nodeCreationRequest(new NodeCreationContext() { screenMousePosition = Vector2.zero, target = null, index = -1 });
+            data.node.Clone();
         }
 
         private void DisconnectAllInput()

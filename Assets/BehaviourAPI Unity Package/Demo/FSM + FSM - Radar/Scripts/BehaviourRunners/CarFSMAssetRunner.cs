@@ -29,7 +29,7 @@ namespace BehaviourAPI.UnityToolkit.Demos
             speedDown.Perception = new ExecutionStatusPerception(m_Radar.GetWorkingState(), StatusFlags.Running);
         }
 
-        public float GetSpeed() => _rb.velocity.magnitude;
+        public float GetSpeed() => _rb.linearVelocity.magnitude;
     }
 
 }

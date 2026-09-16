@@ -2,31 +2,30 @@
 
 namespace BehaviourAPI.Core.Perceptions
 {
-    /// <summary>
-    /// Compound perception that returns true when any of the subperception return true.
-    /// </summary>
-    public class OrPerception : CompoundPerception
+    public class OppositePerception : CompoundPerception
     {
+      
+        /// <summary>
+        /// Create a new or perception.
+        /// </summary>
+        public OppositePerception() : base() { }
+
+        /// <summary>
+        /// Create a new or perception.
+        /// </summary>
+        /// <param name="perceptions">The list of subperceptions.</param>
+        public OppositePerception(List<Perception> perceptions) : base(perceptions) { }
+
+        /// <summary>
+        /// Create a new or perception.
+        /// </summary>
+        /// <param name="perceptions">The list of subperceptions.</param>
+        public OppositePerception(params Perception[] perceptions) : base(perceptions) { }
+
         public override bool allowMultiple()
         {
-            return true;
+            return false;
         }
-        /// <summary>
-        /// Create a new or perception.
-        /// </summary>
-        public OrPerception() : base() { }
-
-        /// <summary>
-        /// Create a new or perception.
-        /// </summary>
-        /// <param name="perceptions">The list of subperceptions.</param>
-        public OrPerception(List<Perception> perceptions) : base(perceptions) { }
-
-        /// <summary>
-        /// Create a new or perception.
-        /// </summary>
-        /// <param name="perceptions">The list of subperceptions.</param>
-        public OrPerception(params Perception[] perceptions) : base(perceptions) { }
 
         /// <summary>
         /// Check all the sub perceptions and return true if any of them returned true.
@@ -36,15 +35,7 @@ namespace BehaviourAPI.Core.Perceptions
         public override bool Check()
         {
             if (Perceptions.Count == 0) return false;
-
-            bool result = false;
-            int idx = 0;
-            while (result == false && idx < Perceptions.Count)
-            {
-                result = Perceptions[idx].Check();
-                idx++;
-            }
-            return result;
+          return  !Perceptions[0].Check();
         }
     }
 }

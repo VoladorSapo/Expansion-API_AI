@@ -4,6 +4,8 @@ using System.Collections.Generic;
 namespace BehaviourAPI.StateMachines
 {
     using Core;
+    using System.Diagnostics;
+    using System.Runtime.InteropServices;
 
     /// <summary>
     /// Transition between two states.

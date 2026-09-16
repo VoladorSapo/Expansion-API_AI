@@ -5,6 +5,7 @@ namespace BehaviourAPI.StateMachines
     using Core;
     using Core.Actions;
     using Core.Perceptions;
+    using System.Diagnostics;
 
     /// <summary>
     /// Decision system builded as a State machine. Each frame, the current state is executed and check its
@@ -278,6 +279,7 @@ namespace BehaviourAPI.StateMachines
         /// </summary>
         protected override void OnUpdated()
         {
+            
             _currentState?.OnUpdated();
         }
 
@@ -311,7 +313,13 @@ namespace BehaviourAPI.StateMachines
                 LastPerformedTransition.SourceStateLastStatus = Status.None;
 
             LastPerformedTransition = transition;
-            _currentState?.OnStopped();
+            if(_currentState == null)
+            {
+                UnityEngine.Debug.LogWarning("no Current State");
+            }
+            UnityEngine.Debug.Log("StopCurrentState");
+            UnityEngine.Debug.Log(_currentState == null);
+           _currentState?.OnStopped();
             _currentState = state;
             _currentState?.OnStarted();
         }

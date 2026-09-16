@@ -7,8 +7,9 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
 {
     using Framework;
     using Core.Perceptions;
+    using System;
 
-    [CustomPropertyDrawer(typeof(CompoundPerceptionWrapper))]
+    [CustomPropertyDrawer(typeof(CompoundPerceptionWrapper), false)]
     public class CompoundPerceptionPropertyDrawer : PropertyDrawer
     {
         private static readonly float k_RemoveGraphBtnWidth = 40;
@@ -40,18 +41,20 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
             var compoundPerceptionProperty = property.FindPropertyRelative("compoundPerception");
 
             var subPerceptionProperty = property.FindPropertyRelative("subPerceptions");
+            object target = property.managedReferenceValue;
+
 
             var labelRect = new Rect(position.x, position.y, position.width - (k_RemoveGraphBtnWidth + k_SpaceWidth), position.height);
             var removeRect = new Rect(position.x + position.width - k_RemoveGraphBtnWidth, position.y, k_RemoveGraphBtnWidth, position.height);
             EditorGUI.LabelField(labelRect, compoundPerceptionProperty.managedReferenceValue.TypeName());
-
-            if (GUI.Button(removeRect, "X"))
-            {
-                property.managedReferenceValue = null;
-                property.serializedObject.ApplyModifiedProperties();
-                return;
-            }
-
+           
+                if (GUI.Button(removeRect, "X"))
+                {
+                    property.managedReferenceValue = null;
+                    property.serializedObject.ApplyModifiedProperties();
+                    return;
+                }
+            
             int deep = compoundPerceptionProperty.propertyPath.Count(c => c == '.');
             foreach (SerializedProperty p in compoundPerceptionProperty)
             {
@@ -60,14 +63,23 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
                     EditorGUILayout.PropertyField(p, true);
                 }
             }
-
-            if (GUILayout.Button("Add element", EditorStyles.popup))
+         
+            if (target is CompoundPerceptionWrapper compoundPerception)
             {
-                SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)),
-                    ElementCreatorWindowProvider.Create<PerceptionCreationWindow>((pType) => AddSubPerception(subPerceptionProperty, pType)));
+                if (subPerceptionProperty == null || compoundPerception.compoundPerception.allowMultiple() || subPerceptionProperty.arraySize == 0)
+                {
+                    if (GUILayout.Button("Add element", EditorStyles.popup))
+                    {
+                        SearchWindow.Open(new SearchWindowContext(GUIUtility.GUIToScreenPoint(Event.current.mousePosition)),
+                            ElementCreatorWindowProvider.Create<PerceptionCreationWindow>((pType) => AddSubPerception(subPerceptionProperty, pType)));
+                    }
+                }
             }
-
-            GUIStyle centeredLabelstyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
+            else
+            {
+                Debug.Log("AAAAAA");
+            }
+                GUIStyle centeredLabelstyle = new GUIStyle(GUI.skin.label) { alignment = TextAnchor.MiddleCenter };
 
             EditorGUILayout.LabelField("Sub perceptions", centeredLabelstyle);
             _scrollPos = EditorGUILayout.BeginScrollView(_scrollPos, "window", GUILayout.MinHeight(300));
@@ -93,4 +105,5 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
             EditorGUILayout.EndScrollView();
         }
     }
-}
+    }
+   

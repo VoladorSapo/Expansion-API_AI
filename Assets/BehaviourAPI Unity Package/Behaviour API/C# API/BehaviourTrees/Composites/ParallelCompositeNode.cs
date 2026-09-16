@@ -1,6 +1,7 @@
 ﻿namespace BehaviourAPI.BehaviourTrees
 {
-    using Core;  
+    using Core;
+    using System.Diagnostics;
 
     /// <summary>
     /// Composite node that executes all its children in all execution frames. It can be configured to stop the execution when
@@ -108,8 +109,9 @@
 
             while(currentChildId < m_children.Count && returnedStatus == Status.Running)
             {
+
                 var child = m_children[currentChildId];
-                if(child.Status == Status.Running)
+                if (child.Status == Status.Running)
                 {
                     child.OnUpdated();
                     currentChildStatus = child.Status;
@@ -120,7 +122,16 @@
                         returnedStatus = currentChildStatus;
                     }
                 }
-                currentChildId++;
+                else
+                {
+                    currentChildStatus = child.Status;
+                    if (finishOnSuccess && currentChildStatus == Status.Success || finishOnFailure && currentChildStatus == Status.Failure)
+                    {
+                        returnedStatus = currentChildStatus;
+                    }
+                }
+
+                    currentChildId++;
             }
 
             if (!anyChildRunning && returnedStatus == Status.Running)

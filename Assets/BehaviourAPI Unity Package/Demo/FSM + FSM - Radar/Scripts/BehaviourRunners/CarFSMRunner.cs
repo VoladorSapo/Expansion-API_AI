@@ -33,8 +33,8 @@ namespace BehaviourAPI.UnityToolkit.Demos
             // Esta percepción se activará cuando el estado del radar sea "working"
             var radarIsWorking = new ExecutionStatusPerception(_radar.GetWorkingState());
 
-            var lowSpeedState = carFSM.CreateState("low speed", new FunctionalAction(() => _rb.velocity = transform.forward * _speed));
-            var highSpeedState = carFSM.CreateState("high speed", new FunctionalAction(() => _rb.velocity = transform.forward * (_speed + 10f)));
+            var lowSpeedState = carFSM.CreateState("low speed", new FunctionalAction(() => _rb.linearVelocity = transform.forward * _speed));
+            var highSpeedState = carFSM.CreateState("high speed", new FunctionalAction(() => _rb.linearVelocity = transform.forward * (_speed + 10f)));
 
             // La FSM cambia de un estado a otro con el paso del tiempo:
             carFSM.CreateTransition("speed up", lowSpeedState, highSpeedState, radarIsBroken);
@@ -44,7 +44,7 @@ namespace BehaviourAPI.UnityToolkit.Demos
             return carFSM;
         }
 
-        public float GetSpeed() => _rb.velocity.magnitude;
+        public float GetSpeed() => _rb.linearVelocity.magnitude;
     }
 
 }

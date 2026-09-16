@@ -5,6 +5,8 @@ namespace BehaviourAPI.StateMachines
 {
     using Core;
     using Core.Actions;
+    using System.Diagnostics;
+
     /// <summary>
     /// Represents a state in a FSM graph.
     /// </summary>
@@ -126,12 +128,23 @@ namespace BehaviourAPI.StateMachines
             if (Status == Status.Running)
             {
                 Status actionResults = Action?.Update() ?? Status.Running;
-                if(actionResults != Status.Running)
+                if (actionResults != Status.Running)
                 {
                     Action?.Stop();
                     _isActionRunning = false;
                 }
+                if (Status == Status.None)
+                {
+                    UnityEngine.Debug.Log("CancelledAction");
+                    return;
+                }
                 Status = actionResults;
+                
+                //if ((BehaviourGraph as FSM) != null && (BehaviourGraph as FSM).IsCurrentState(this))
+                //{
+                //    Status = Status.None;
+                //}
+
             }
 
             CheckTransitions();
@@ -148,13 +161,12 @@ namespace BehaviourAPI.StateMachines
                 throw new ExecutionStatusException(this, "ERROR: This node is already been stopped");
 
             Status = Status.None;
-
             if(_isActionRunning)
             {
+                UnityEngine.Debug.Log("stopcurrentaction");
                 Action?.Stop();
                 _isActionRunning = false;
             }
-
             _transitions.ForEach(t => t?.Stop());
         }
 

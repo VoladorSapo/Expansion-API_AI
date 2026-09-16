@@ -5,14 +5,16 @@ using System.Text;
 namespace BehaviourAPI.BehaviourTrees
 {
     using Core;
+    using System.Diagnostics;
     using System.Reflection;
+    using UnityEngine;
 
     /// <summary>
     /// Composite node that selects one of its branch to execute it.
     /// </summary>
     public abstract class BranchNode : CompositeNode
     {
-        BTNode m_SelectedNode;
+     protected   BTNode m_SelectedNode;
 
         /// <summary>
         /// <inheritdoc/>

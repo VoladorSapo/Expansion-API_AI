@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-
 namespace BehaviourAPI.UnityToolkit
 {
     using Core;
@@ -63,6 +62,7 @@ namespace BehaviourAPI.UnityToolkit
         /// The characterController component.
         /// </summary>
         public CharacterController CharacterController { get; private set; }
+
 
         /// <summary>
         /// The component used by movement actions.

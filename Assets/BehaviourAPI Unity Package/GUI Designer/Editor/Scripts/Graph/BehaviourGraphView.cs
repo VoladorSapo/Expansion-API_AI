@@ -8,7 +8,9 @@ using Vector2 = UnityEngine.Vector2;
 
 namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
 {
+    using Codice.Client.Commands.WkTree;
     using Framework;
+    using System.Drawing.Printing;
     using System.Linq;
 
     /// <summary>
@@ -89,6 +91,10 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             m_EdgeConnectorListener = new CustomEdgeConnector<EdgeView>(OnEdgeCreated, OnEdgeCreatedOutsidePort);
 
             // Events
+            serializeGraphElements += CopyElements;
+            unserializeAndPaste += PasteOperation;
+            canPasteSerializedData += CanPaste;
+
             nodeCreationRequest = HandleNodeCreationCall;
             graphViewChanged = HandleGraphViewChanged;
             m_EditorWindow = editorWindow;
@@ -349,6 +355,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             }
 
             m_NodeViewMap.TryAdd(nodeData.id, mNodeView);
+            Debug.Log(JsonUtility.ToJson(nodeData));
             AddElement(mNodeView);
         }
 
@@ -421,6 +428,16 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
 
         public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
         {
+            if (evt.target is GraphView || evt.target is Node || evt.target is Group)
+            {
+                evt.menu.AppendSeparator();
+                evt.menu.AppendAction("Duplicate", delegate
+                {
+                    DuplicateSelectionCallback();
+                }, (DropdownMenuAction a) => canDuplicateSelection ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendSeparator();
+            }
+
             evt.menu.AppendAction("Create Node", dma =>
             {
                 nodeCreationRequest(new NodeCreationContext() { screenMousePosition = dma.eventInfo.mousePosition + m_EditorWindow.position.position, target = null, index = -1 });
@@ -428,6 +445,47 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                 (m_CurrentGraphNodesProperty != null) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled
             );
             evt.menu.AppendAction("Auto layout", _ => AutoLayoutGraph());
+        }
+        private string CopyElements(IEnumerable<GraphElement> elements)
+        {
+            
+            foreach (GraphElement element in elements)
+            {
+
+                Debug.Log(element.title);
+                Debug.Log(JsonUtility.ToJson(element));
+
+                string s = JsonUtility.ToJson(element);
+                if (s != "{}")
+                {
+                    NodeView nodeview = element as NodeView;
+                    DrawNode(nodeview.data);
+                    //AddToSelection(element);
+                    return s;
+                    //return "{\"name\":\"A\",\"id\":\"f6a8f882-da28-4586-a6f9-39d0519ffb83\",\"position\":{\"x\":488.0,\"y\":216.0},\"node\":{\"rid\":1000},\"references\":[{\"fieldName\":\"Action\",\"value\":{\"rid\":-2},\"fieldType\":\"BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"}],\"parentIds\":[],\"childIds\":[\"f80c149a-4585-40fd-984e-0e2fb31b6169\"]}";
+                }
+            }
+            Debug.Log("Nothing");
+
+            return "";
+        }
+        private void PasteOperation(string operationName, string data)
+        {
+            Debug.Log(data);
+            if (data != "")
+            {
+              //data=  data.Substring(1, data.Length - 1);
+                //data.Remove(data.Length - 1);
+                //data.Remove(0);
+                Debug.Log(data);
+                AddElement(JsonUtility.FromJson<BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs.NodeView>(data));
+            }
+        }
+        private bool CanPaste(string data)
+        {
+            Debug.Log("CAN PASTE"+data);
+
+            return true;
         }
 
         private void AutoLayoutGraph()

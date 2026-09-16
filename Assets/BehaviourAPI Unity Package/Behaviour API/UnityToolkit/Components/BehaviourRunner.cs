@@ -50,9 +50,9 @@ namespace BehaviourAPI.UnityToolkit
 
         private void Update() => OnUpdated();
 
-        private void OnEnable() => OnDisableSystem();
+        protected virtual void OnEnable() => OnDisableSystem();
 
-        private void OnDisable() => OnEnableSystem();
+        protected virtual void OnDisable() => OnEnableSystem();
 
 
         /// <summary>
@@ -96,19 +96,22 @@ namespace BehaviourAPI.UnityToolkit
         {
             if (_executionGraph != null)
             {
+                
                 if (_executionGraph.Status != Status.Running) return;
 
                 _executionGraph.Update();
-
                 if (_executionGraph.Status != Status.Running)
                 {
-                    if(executeOnLoop)
+                    Debug.LogWarning("EndBehaviour");
+
+                    if (executeOnLoop)
                     {
                         _executionGraph.Restart();
                     }
                     else
                     {
                         _executionGraph.Stop();
+                        
                     }
                 }
             }
