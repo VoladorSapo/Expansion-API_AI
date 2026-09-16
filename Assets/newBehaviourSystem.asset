@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db249917b7c50574eaa600c74aff1437, type: 3}
+  m_Name: newBehaviourSystem
+  m_EditorClassIdentifier: BehaviourAPI.UnityToolkit.GUIDesigner.Framework::BehaviourAPI.UnityToolkit.GUIDesigner.Framework.BehaviourSystem
+  data:
+    graphs:
+    - name: newbehaviourgraph
+      id: 1ac9f133-2d2f-49cc-855e-3cd87c7ba54c
+      graph:
+        rid: 3633840887034281984
+      nodes:
+      - name: C
+        id: 223147c4-833d-45f0-8234-6969bbe20dfb
+        position: {x: 856.00006, y: 328.80002}
+        node:
+          rid: 3633840887034281986
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - f80c149a-4585-40fd-984e-0e2fb31b6169
+        childIds: []
+      - name: transicion
+        id: f80c149a-4585-40fd-984e-0e2fb31b6169
+        position: {x: 704, y: 73.6}
+        node:
+          rid: 3633840887034281987
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 223147c4-833d-45f0-8234-6969bbe20dfb
+      - name: 
+        id: 80e1c6f7-c62c-47b5-a5b8-428c63bb81b9
+        position: {x: 532.8, y: 517.60004}
+        node:
+          rid: 7475604117418147904
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+    pushPerceptions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 3633840887034281984
+      type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 3633840887034281986
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 3633840887034281987
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: 0
+    - rid: 7475604117418147904
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
