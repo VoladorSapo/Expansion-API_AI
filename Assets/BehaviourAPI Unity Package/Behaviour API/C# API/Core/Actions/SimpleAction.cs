@@ -3,6 +3,7 @@
     /// <summary>
     /// Action that executes a custom method when is started and always returns success.
     /// </summary>
+    [System.Serializable]
     public class SimpleAction : Action
     {
         /// <summary>

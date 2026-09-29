@@ -4,12 +4,13 @@ using System.Collections.Generic;
 namespace BehaviourAPI.UtilitySystems
 {
     using Core;
-    
+
 
     /// <summary>
     /// Utility element that handle multiple <see cref="UtilitySelectableNode"/> itself and
     /// returns the maximum utility if its best candidate utility is higher than the threshold.
     /// </summary>
+    [System.Serializable]
     public class UtilityBucket : UtilitySelectableNode
     {
         #region ----------------------------------------- Properties -----------------------------------------

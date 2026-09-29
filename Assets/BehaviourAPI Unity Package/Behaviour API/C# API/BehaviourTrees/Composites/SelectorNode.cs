@@ -5,6 +5,7 @@ namespace BehaviourAPI.BehaviourTrees
     /// <summary>
     /// Serial Composite node that executes its children until one of them returns Succeded.
     /// </summary>
+    [System.Serializable]
     public class SelectorNode : SerialCompositeNode
     {
         protected override bool KeepExecutingNextChild(Status status)

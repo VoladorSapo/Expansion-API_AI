@@ -11,6 +11,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
     using Core.Actions;
     using Core.Perceptions;
     using Core.Serialization;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Class that serialize node data.
@@ -130,6 +131,12 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
             List<Node> children = childIds.Select(id => buildData.NodeMap[id]).ToList();
             graphBuilder.AddNode(name, node, parents, children);
             references.ForEach(r => r.Build(node, buildData));
+        }
+
+        public NodeData DeepCopy(JsonSerializerSettings settings)
+        {
+            string json = JsonConvert.SerializeObject(this, settings);
+            return JsonConvert.DeserializeObject<NodeData>(json, settings);
         }
     }
 }

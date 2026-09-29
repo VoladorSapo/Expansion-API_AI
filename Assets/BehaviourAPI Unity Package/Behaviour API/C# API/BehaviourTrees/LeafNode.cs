@@ -3,11 +3,12 @@
 namespace BehaviourAPI.BehaviourTrees
 {
     using Core.Actions;
-    
+
 
     /// <summary>
     /// BTNode type that has no children and executes an <see cref="Core.Actions.Action"/>.
     /// </summary>
+    [System.Serializable]
     public class LeafNode : BTNode
     {
         #region ------------------------------------------ Properties -----------------------------------------

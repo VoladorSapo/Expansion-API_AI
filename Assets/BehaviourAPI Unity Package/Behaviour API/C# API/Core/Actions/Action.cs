@@ -5,6 +5,7 @@ namespace BehaviourAPI.Core.Actions
     /// <summary>
     /// Represent a task that a behaviour agent can perform.
     /// </summary>
+    [System.Serializable]
     public abstract class Action : ICloneable
     {
         /// <summary>

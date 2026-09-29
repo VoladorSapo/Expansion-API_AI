@@ -3,6 +3,7 @@
     /// <summary>
     /// Leaf factor which have a constant utility value
     /// </summary>
+    [System.Serializable]
     public class ConstantFactor : LeafFactor
     {
         #region ------------------------------------------- Fields -------------------------------------------

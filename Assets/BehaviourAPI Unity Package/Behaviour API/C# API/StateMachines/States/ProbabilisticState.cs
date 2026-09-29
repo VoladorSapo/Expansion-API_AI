@@ -7,6 +7,7 @@ namespace BehaviourAPI.StateMachines
     /// <summary>
     /// State that checks its transitions depending on probabilities.
     /// </summary>
+    [System.Serializable]
     public class ProbabilisticState : State
     {
         #region ------------------------------------------ Properties -----------------------------------------

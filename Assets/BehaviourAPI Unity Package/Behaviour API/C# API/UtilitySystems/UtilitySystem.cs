@@ -11,6 +11,7 @@ namespace BehaviourAPI.UtilitySystems
     /// <summary>
     /// Behaviour graph that choose between diferent <see cref="UtilitySelectableNode"/> items and executes.
     /// </summary>
+    [System.Serializable]
     public class UtilitySystem : BehaviourGraph
     {
         #region ------------------------------------------ Properties -----------------------------------------

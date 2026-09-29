@@ -2,6 +2,7 @@
 
 namespace BehaviourAPI.Core.Perceptions
 {
+    [System.Serializable]
     public class OppositePerception : CompoundPerception
     {
       

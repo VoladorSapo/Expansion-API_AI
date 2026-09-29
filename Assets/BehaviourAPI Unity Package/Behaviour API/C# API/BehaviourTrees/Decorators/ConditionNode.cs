@@ -9,6 +9,7 @@ namespace BehaviourAPI.BehaviourTrees
     /// Decorator that executes its child only if a perception is triggered. Perception is checked at the start
     /// and return Failure if isn't triggered. Otherwise execute the child and returns its value.
     /// </summary>
+    [System.Serializable]
     public class ConditionNode : DecoratorNode
     {
         #region ------------------------------------------ Properties -----------------------------------------

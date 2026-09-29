@@ -5,11 +5,13 @@ namespace BehaviourAPI.StateMachines
 {
     using Core;
     using Core.Actions;
+    using Newtonsoft.Json;
     using System.Diagnostics;
 
     /// <summary>
     /// Represents a state in a FSM graph.
-    /// </summary>
+    /// </summary>   
+    [System.Serializable]
     public class State : FSMNode, IStatusHandler
     {
         #region ------------------------------------------ Properties -----------------------------------------
@@ -36,6 +38,8 @@ namespace BehaviourAPI.StateMachines
         /// <summary>
         /// Event called when current status changed.
         /// </summary>
+        
+        [JsonIgnore]
         public Action<Status> StatusChanged { get; set; } = delegate { };
 
         #endregion
@@ -247,5 +251,10 @@ namespace BehaviourAPI.StateMachines
         }
 
         #endregion
+
+        public void setAction(Action action)
+        {
+            this.Action = action;
+        }
     }
 }

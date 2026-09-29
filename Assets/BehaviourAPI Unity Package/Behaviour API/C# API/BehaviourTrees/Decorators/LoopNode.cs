@@ -1,11 +1,12 @@
 ﻿namespace BehaviourAPI.BehaviourTrees
 {
     using Core;
-    
+
 
     /// <summary>
     /// Node that execute its child node the number of times determined by <see cref="Iterations"/>
     /// </summary>
+    [System.Serializable]
     public  class LoopNode : DirectDecoratorNode
     {
         #region ----------------------------------------- Properties -----------------------------------------

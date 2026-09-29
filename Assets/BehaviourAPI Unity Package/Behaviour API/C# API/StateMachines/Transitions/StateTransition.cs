@@ -10,6 +10,7 @@ namespace BehaviourAPI.StateMachines
     /// <summary>
     /// Transition between two states.
     /// </summary>
+    [System.Serializable]
     public class StateTransition : Transition
     {
         #region ------------------------------------------ Properties -----------------------------------------
@@ -41,7 +42,6 @@ namespace BehaviourAPI.StateMachines
             else
                 throw new ArgumentException();
         }
-
 
         #endregion
 

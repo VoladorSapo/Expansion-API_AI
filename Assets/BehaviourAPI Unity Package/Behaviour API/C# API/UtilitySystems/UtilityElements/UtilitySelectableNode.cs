@@ -7,6 +7,7 @@ namespace BehaviourAPI.UtilitySystems
     /// <summary>
     /// Utility node that can be selected and executed by a utility system.
     /// </summary>
+    [System.Serializable]
     public abstract class UtilitySelectableNode : UtilityNode, IStatusHandler
     {
         #region ------------------------------------------ Properties -----------------------------------------

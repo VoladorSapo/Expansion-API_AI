@@ -11,6 +11,7 @@ namespace BehaviourAPI.StateMachines
     /// Decision system builded as a State machine. Each frame, the current state is executed and check its
     /// transitions.
     /// </summary>
+    [System.Serializable]
     public class FSM : BehaviourGraph
     {
         #region ------------------------------------------ Properties -----------------------------------------
@@ -98,7 +99,7 @@ namespace BehaviourAPI.StateMachines
         public State CreateState(Action action = null)
         {
             State state = CreateNode<State>();
-            state.Action = action;
+            state.setAction(action);
             return state;
         }
 
@@ -111,7 +112,7 @@ namespace BehaviourAPI.StateMachines
         public State CreateState(string name, Action action = null)
         {
             State state = CreateNode<State>(name);
-            state.Action = action;
+            state.setAction(action);
             return state;
         }
 
@@ -124,7 +125,7 @@ namespace BehaviourAPI.StateMachines
         public T CreateState<T>(Action action = null) where T : State, new()
         {
             T state = CreateNode<T>();
-            state.Action = action;
+            state.setAction(action);
             return state;
         }
 
@@ -138,7 +139,7 @@ namespace BehaviourAPI.StateMachines
         public T CreateState<T>(string name, Action action = null) where T : State, new()
         {
             T state = CreateNode<T>(name);
-            state.Action = action;
+            state.setAction(action);
             return state;
         }
 
@@ -201,6 +202,7 @@ namespace BehaviourAPI.StateMachines
         /// <returns>The <see cref="StateTransition"/> created.</returns>
         public StateTransition CreateTransition(State from, State to, Perception perception = null, Action action = null, StatusFlags statusFlags = StatusFlags.Active)
         {
+            UnityEngine.Debug.Log("Create Transition");
             StateTransition transition = CreateInternalTransition<StateTransition>(from, perception, action, statusFlags);
             Connect(transition, to);
             transition.SetTargetState(to);

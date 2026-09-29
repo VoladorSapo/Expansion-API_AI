@@ -5,6 +5,7 @@
     /// <summary>
     /// Utility node that finish the execution of the utility system when is selected.
     /// </summary>
+    [System.Serializable]
     public class UtilityExitNode : UtilityExecutableNode
     {
         #region ------------------------------------------ Properties ----------------------------------------

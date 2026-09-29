@@ -5,6 +5,7 @@ namespace BehaviourAPI.BehaviourTrees
     /// <summary>
     /// Node that execute its child node until returns a given value.
     /// </summary>
+    [System.Serializable]
     public class LoopUntilNode : DirectDecoratorNode
     {
         #region ----------------------------------------- Properties -----------------------------------------

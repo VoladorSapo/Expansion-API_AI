@@ -6,6 +6,7 @@ namespace BehaviourAPI.StateMachines
     using Core;
     using Core.Actions;
     using Core.Perceptions;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Base class for transitions in fsm.
@@ -21,12 +22,12 @@ namespace BehaviourAPI.StateMachines
         /// <summary>
         /// Event triggered when the action is performed.
         /// </summary>
-        public System.Action TransitionTriggered { get; set; } = delegate { };
+     [JsonIgnore]   public System.Action TransitionTriggered { get; set; } = delegate { };
 
         /// <summary>
         /// Event triggered when source state's last status changed.
         /// </summary>
-        public Action<Status> SourceStateLastStatusChanged { get; set; } = delegate { };
+        [JsonIgnore] public Action<Status> SourceStateLastStatusChanged { get; set; } = delegate { };
 
         /// <summary>
         /// The status that the source state had when this transition was triggered

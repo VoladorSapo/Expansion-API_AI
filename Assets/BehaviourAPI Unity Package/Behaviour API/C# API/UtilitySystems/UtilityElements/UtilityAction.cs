@@ -6,6 +6,7 @@ namespace BehaviourAPI.UtilitySystems
     /// <summary>
     /// Utility node that executes an <see cref="Action"/> while selected.
     /// </summary>
+    [System.Serializable]
     public class UtilityAction : UtilityExecutableNode
     {
         #region ------------------------------------------- Fields -------------------------------------------

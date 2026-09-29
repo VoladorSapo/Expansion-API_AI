@@ -448,7 +448,10 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                 evt.menu.AppendAction("Disconnect all output edges.", _ => DisconnectAllOutput(),
                     (OutputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendAction("Duplicate.", _ => Duplicate(),
-                (InputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                DropdownMenuAction.Status.Normal);
+                evt.menu.AppendSeparator();
+                evt.menu.AppendAction("Print ID.", _ => { Debug.Log(data.id); },
+          DropdownMenuAction.Status.Normal);
                 evt.menu.AppendSeparator();
             }
 

@@ -85,7 +85,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
          
             var compoundType = compoundPerception.GetType();
             if(compoundType == typeof(OppositePerception)) {
-                return $"!(" + ((subPerceptions == null || subPerceptions.Count == 0)? "" : subPerceptions[0].perception.ToString()) +  ")";
+                return $"!(" + ((subPerceptions == null || subPerceptions.Count == 0)? "" : /*subPerceptions[0].perception.ToString()*/"") +  ")";
             }
             var logicCharacter = compoundType == typeof(AndPerception) ? " && " : compoundType == typeof(OrPerception) ? " || " : " - ";
             return "(" + string.Join(logicCharacter, subPerceptions.Select(sub => sub.perception?.ToString())) + ")";

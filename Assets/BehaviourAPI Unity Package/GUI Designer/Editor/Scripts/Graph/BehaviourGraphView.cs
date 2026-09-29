@@ -1,17 +1,23 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Vector2 = UnityEngine.Vector2;
-
 namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
 {
+    using BehaviourAPI.StateMachines;
     using Codice.Client.Commands.WkTree;
     using Framework;
     using System.Drawing.Printing;
     using System.Linq;
+    using System.Security.Cryptography;
+    
 
     /// <summary>
     /// Class used to represent the nodes of a <see cref="GraphData"/> element in a editor window.
@@ -248,6 +254,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
 
         private void CreateNode(Type type, Vector2 pos)
         {
+            Debug.Log(type);
             if (m_CurrentGraphNodesProperty == null) return;
 
             var localPos = contentViewContainer.WorldToLocal(pos - m_EditorWindow.position.position);
@@ -276,7 +283,35 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             AddElement(edgeView);
             UpdateProperties();
         }
-
+        private NodeData CopyNode(NodeData ogNode)
+        {
+            Debug.Log(ogNode.id);
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+            };
+            NodeData newData = ogNode.DeepCopy(settings);
+            newData.id = Guid.NewGuid().ToString();
+            Debug.Log("old ID: "+ogNode.id);
+            Debug.Log("new ID: "+newData.id);
+            newData.position = newData.position + new Vector2(50, 50);
+            if (newData != null)
+            {
+                // UndoRegisterOperationPerformed?.Invoke("Created node");
+                //m_EditorWindow.RegisterOperation("Created node");
+                //data.node = (BehaviourAPI.Core.Node)oldData.node.Clone();
+                //data.node = node;
+                //State oldState = data.node as State;
+                //State state = data.node as State;
+                //state.setAction(oldState.Action);
+               
+                graphData.nodes.Add(newData);
+                Debug.Log("sent ID: " + newData.id);
+                return newData;
+            }
+            return null;
+        }
         private void ClearView()
         {
             foreach (var nodeView in m_NodeViewMap.Values)
@@ -347,6 +382,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
         {
             NodeDrawer drawer = NodeDrawer.Create(nodeData.node);
             var index = graphData.nodes.IndexOf(nodeData);
+            //Debug.Log(index);
             NodeView mNodeView = new NodeView(nodeData, drawer, this, m_CurrentGraphNodesProperty?.GetArrayElementAtIndex(index));
 
             if (IsRuntime)
@@ -355,7 +391,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             }
 
             m_NodeViewMap.TryAdd(nodeData.id, mNodeView);
-            Debug.Log(JsonUtility.ToJson(nodeData));
+           // Debug.Log(JsonUtility.ToJson(nodeData));
             AddElement(mNodeView);
         }
 
@@ -446,39 +482,133 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             );
             evt.menu.AppendAction("Auto layout", _ => AutoLayoutGraph());
         }
+        private class ClipboardContainer 
+        {
+            public State state;
+            public Vector2 pos;
+            public string name;
+        }
+
         private string CopyElements(IEnumerable<GraphElement> elements)
         {
-            
+            string data = string.Empty;
+            List<string> nodeList = new List<string>();
+         //   List<string> datalist = new List<string>();
+            var settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+
+            };
             foreach (GraphElement element in elements)
             {
-
-                Debug.Log(element.title);
-                Debug.Log(JsonUtility.ToJson(element));
-
-                string s = JsonUtility.ToJson(element);
-                if (s != "{}")
+                Debug.Log(element);
+                EdgeView edgeView = element as EdgeView;
+                if (edgeView != null)
                 {
-                    NodeView nodeview = element as NodeView;
-                    DrawNode(nodeview.data);
-                    //AddToSelection(element);
-                    return s;
-                    //return "{\"name\":\"A\",\"id\":\"f6a8f882-da28-4586-a6f9-39d0519ffb83\",\"position\":{\"x\":488.0,\"y\":216.0},\"node\":{\"rid\":1000},\"references\":[{\"fieldName\":\"Action\",\"value\":{\"rid\":-2},\"fieldType\":\"BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null\"}],\"parentIds\":[],\"childIds\":[\"f80c149a-4585-40fd-984e-0e2fb31b6169\"]}";
+                    NodeView input = (NodeView)edgeView.input.node;
+                    NodeView output = (NodeView)edgeView.output.node;
+
+                    Debug.Log(input.data.id);
+                    Debug.Log(output.data.id);
+
+                }
+                NodeView view = element as NodeView;
+                if (view != null)
+                {
+                    nodeList.Add(JsonConvert.SerializeObject(view.data, settings));
                 }
             }
-            Debug.Log("Nothing");
-
-            return "";
+            data = JsonConvert.SerializeObject(nodeList.ToArray(), settings);
+            return data;
         }
         private void PasteOperation(string operationName, string data)
         {
             Debug.Log(data);
+            List<string> allNodesIds = new List<string>();
             if (data != "")
             {
               //data=  data.Substring(1, data.Length - 1);
                 //data.Remove(data.Length - 1);
                 //data.Remove(0);
-                Debug.Log(data);
-                AddElement(JsonUtility.FromJson<BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs.NodeView>(data));
+                var settings = new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+                };
+
+                string[] datalist = JsonConvert.DeserializeObject<string[]>(data, settings);
+
+                //NodeData nodeData = new NodeData();
+                //EditorJsonUtility.FromJsonOverwrite(data, nodeData);
+                //NodeView nodeview = element as NodeView;
+                //DrawNode(nodeview.data);
+                Dictionary<string,string> oldIdtoNewId = new Dictionary<string,string>();
+                List<NodeData> allNodes = new List<NodeData>();
+                foreach (string s in datalist)
+                {
+                    NodeData nodeData = JsonConvert.DeserializeObject<NodeData>(s, settings);
+                    if (nodeData != null)
+                    {
+                        if (nodeData.references != null)
+                        {
+                            foreach (var reference in nodeData.references)
+                            {
+                                if (reference == null || string.IsNullOrEmpty(reference.FieldName))
+                                {
+                                    Debug.LogWarning($"Skipping malformed reference: {JsonConvert.SerializeObject(reference)}");
+                                    continue;
+                                }
+
+                                var field = nodeData.node.GetType().GetField(
+                                    reference.FieldName,
+                                    BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
+
+                                if (field != null)
+                                    field.SetValue(nodeData.node, reference.Value);
+                                else
+                                    Debug.LogWarning($"Could not find field '{reference.FieldName}' on {nodeData.node.GetType()}");
+                            }
+                        }
+                        NodeData newData = CopyNode(nodeData);
+
+                        if (newData != null)
+                        {
+                            oldIdtoNewId.Add(nodeData.id, newData.id);
+                            allNodes.Add(newData);
+                            Debug.Log("saved ID: " + newData.id);
+                            allNodesIds.Add(newData.id);
+                        }
+                        else
+                        {
+                            Debug.Log("Selection is null");
+                        }
+                    }
+                }
+                Debug.Log(oldIdtoNewId);
+                foreach(string key in oldIdtoNewId.Keys)
+                {
+                    Debug.Log($"KEY: {key} VALUE: {oldIdtoNewId[key]}");
+                }
+                // CreateNode(element.data.node.GetType(), element.data.position);
+                foreach (NodeData nodeData in allNodes)
+                {
+                    swapFromDictionary(oldIdtoNewId, nodeData.childIds);
+                    swapFromDictionary(oldIdtoNewId, nodeData.parentIds);
+                }
+
+            }
+
+            m_CurrentGraphNodesProperty.serializedObject.Update();
+            ClearView();
+            DrawGraph();
+            ClearSelection();
+            Debug.Log(allNodesIds.Count);  
+            foreach(string id in allNodesIds)
+            {
+                m_NodeViewMap.TryGetValue(id, out var node);
+                if (node != null)
+                    AddToSelection(node);
             }
         }
         private bool CanPaste(string data)
@@ -486,6 +616,20 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             Debug.Log("CAN PASTE"+data);
 
             return true;
+        }
+        private void swapFromDictionary(Dictionary<string, string> dict,List<string> list)
+        {
+            for (int i = list.Count - 1; i >= 0; i--)
+            {
+                string key = list[i];
+                if(dict.TryGetValue(key, out var value)){
+                    list[i] = value;
+                }
+                else
+                {
+                    list.RemoveAt(i);
+                }
+            }
         }
 
         private void AutoLayoutGraph()
@@ -561,4 +705,5 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
 
         #endregion
     }
+
 }

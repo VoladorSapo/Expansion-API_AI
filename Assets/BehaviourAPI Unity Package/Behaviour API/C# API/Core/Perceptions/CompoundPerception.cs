@@ -21,6 +21,7 @@ namespace BehaviourAPI.Core.Perceptions
         public CompoundPerception()
         {
             Perceptions = new List<Perception>();
+            
         }
         
 

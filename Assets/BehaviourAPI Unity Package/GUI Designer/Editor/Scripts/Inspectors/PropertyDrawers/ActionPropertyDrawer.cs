@@ -19,6 +19,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
 
         private void AssignAction(SerializedProperty property, System.Type actionType)
         {
+            Debug.Log("Assign Action");
             if (actionType.IsSubclassOf(typeof(CompoundAction)))
             {
                 var compound = (CompoundAction)System.Activator.CreateInstance(actionType);

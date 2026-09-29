@@ -7,6 +7,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
     /// Adaptation class for use custom <see cref="ConditionPerception"/> in editor tools.
     /// <para>! -- Don't use this class directly in code.</para>
     /// </summary>
+    [System.Serializable]
     public class CustomPerception : ConditionPerception, IBuildable
     {
         /// <summary>

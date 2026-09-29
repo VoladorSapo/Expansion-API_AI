@@ -9,6 +9,7 @@ namespace BehaviourAPI.UtilitySystems
     /// <summary>
     /// Utility selectable node that computes its utility with a factor.
     /// </summary>
+    [System.Serializable]
     public abstract class UtilityExecutableNode : UtilitySelectableNode
     {
         #region ------------------------------------------ Properties ----------------------------------------

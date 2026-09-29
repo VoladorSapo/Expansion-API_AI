@@ -14,14 +14,15 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
         [SerializeReference] object value;
         [SerializeReference] string fieldType;
 
+        public ReferenceData() { }
         public ReferenceData(string name, Type type)
         {
             fieldName = name;
             fieldType = type.AssemblyQualifiedName;
         }
 
-        public string FieldName => fieldName;
-        public string FieldType => fieldType;
+        public string FieldName { get => fieldName; set => fieldName = value; }
+        public string FieldType { get => fieldType; set => fieldType = value; }
         public object Value { get => value; set => this.value = value; }
 
         public void Build(Node node, BSBuildingInfo buildData)

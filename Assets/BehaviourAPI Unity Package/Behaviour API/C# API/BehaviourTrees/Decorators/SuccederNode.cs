@@ -1,11 +1,12 @@
 namespace BehaviourAPI.BehaviourTrees
 {
     using Core;
-    
+
 
     /// <summary>
     /// Node that changes the result returned by its child node to Succeded if it's Failure.
     /// </summary>
+    [System.Serializable]
     public class SuccederNode : DirectDecoratorNode
     {
         #region --------------------------------------- Runtime methods --------------------------------------

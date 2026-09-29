@@ -37,9 +37,9 @@ namespace BehaviourAPI.UnityToolkit.Demos
             var mainGraph = graphMap["main"];
             var subgraph = graphMap["key subtree"];
 
-            mainGraph.FindNode<State>("go to home").Action = new WalkAction(_doorPos);
-            mainGraph.FindNode<State>("enter house").Action = new FunctionalAction(EnterTheHouse);
-            mainGraph.FindNode<State>("run").Action = new FleeAction(_enemyTransform, 1.5f, 10, 3);
+            mainGraph.FindNode<State>("go to home").setAction(new WalkAction(_doorPos));
+            mainGraph.FindNode<State>("enter house").setAction(new FunctionalAction(EnterTheHouse));
+            mainGraph.FindNode<State>("run").setAction(new FleeAction(_enemyTransform, 1.5f, 10, 3));
 
             Perception enemyPerception = new DistancePerception(_enemyTransform, 10);
             mainGraph.FindNode<StateTransition>("house to running").Perception = enemyPerception;

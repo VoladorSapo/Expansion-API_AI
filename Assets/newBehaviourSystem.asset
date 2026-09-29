@@ -19,29 +19,28 @@ MonoBehaviour:
       graph:
         rid: 3633840887034281984
       nodes:
-      - name: C
-        id: 223147c4-833d-45f0-8234-6969bbe20dfb
-        position: {x: 856.00006, y: 328.80002}
+      - name: 
+        id: 0be96310-1df7-4db8-902c-e500308ab840
+        position: {x: 822.4, y: -104}
         node:
-          rid: 3633840887034281986
+          rid: 7475604281152504003
         references:
         - fieldName: Action
           value:
-            rid: -2
+            rid: 7475604281152504004
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
-        parentIds:
-        - f80c149a-4585-40fd-984e-0e2fb31b6169
+        parentIds: []
         childIds: []
-      - name: transicion
-        id: f80c149a-4585-40fd-984e-0e2fb31b6169
-        position: {x: 704, y: 73.6}
+      - name: 
+        id: 8a4da143-7126-474c-9148-583884e7de56
+        position: {x: 170.4, y: 207.19998}
         node:
-          rid: 3633840887034281987
+          rid: 7475604281152504005
         references:
         - fieldName: Perception
           value:
-            rid: -2
+            rid: 7475604281152504006
           fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
@@ -50,19 +49,98 @@ MonoBehaviour:
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
         parentIds: []
-        childIds:
-        - 223147c4-833d-45f0-8234-6969bbe20dfb
+        childIds: []
       - name: 
-        id: 80e1c6f7-c62c-47b5-a5b8-428c63bb81b9
-        position: {x: 532.8, y: 517.60004}
+        id: 8b43fdde-3c43-4c54-98a0-a4f4f89fb798
+        position: {x: 1156.8, y: 369.6}
         node:
-          rid: 7475604117418147904
+          rid: 7475604281152504009
         references:
+        - fieldName: Perception
+          value:
+            rid: 7475604281152504010
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         - fieldName: Action
           value:
             rid: -2
           fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: f1bdc4fa-0d8c-4d48-8aec-9d25817f9faf
+        position: {x: 667.2, y: 499.19998}
+        node:
+          rid: 7475604281152504018
+        references:
+        - fieldName: Action
+          value:
+            rid: 7475604281152504019
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 9c548525-0cc3-41ee-81ce-c55591b754c8
+        position: {x: 170.4, y: 207.19998}
+        node:
+          rid: 7475604281152504023
+        references:
+        - fieldName: Perception
+          value:
+            rid: 7475604281152504024
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 89f13e1b-96a2-4776-ad1c-9b343cdf25d6
+        position: {x: 170.4, y: 207.19998}
+        node:
+          rid: 7475604281152504026
+        references:
+        - fieldName: Perception
+          value:
+            rid: 7475604281152504027
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+    - name: tree
+      id: 4dffc890-0f0c-42cc-8321-f0b1194fb88c
+      graph:
+        rid: 7475604281152504083
+      nodes:
+      - name: 
+        id: 47a00125-04ca-4f98-b9ed-9be07ce56b3b
+        position: {x: 1082.4, y: 425.6}
+        node:
+          rid: 7475604281152504084
+        references:
+        - fieldName: Action
+          value:
+            rid: 7475604281152504086
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 093e5133-6a56-4738-b81e-005a6fa55c06
+        position: {x: 1262.1941, y: 378.764}
+        node:
+          rid: 7475604281152504089
+        references: []
         parentIds: []
         childIds: []
     pushPerceptions: []
@@ -74,13 +152,137 @@ MonoBehaviour:
     - rid: 3633840887034281984
       type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 3633840887034281986
+    - rid: 7475604281152504003
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
-    - rid: 3633840887034281987
+    - rid: 7475604281152504004
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: puz
+          methodName: Frio
+    - rid: 7475604281152504005
       type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data:
-        StatusFlags: 0
-    - rid: 7475604117418147904
+        StatusFlags: -1
+    - rid: 7475604281152504006
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: puz
+          methodName: fireIsClose
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 7475604281152504009
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 7475604281152504010
+      type: {class: CompoundPerceptionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundPerception:
+          rid: 7475604281152504011
+        subPerceptions:
+        - perception:
+            rid: 7475604281152504012
+    - rid: 7475604281152504011
+      type: {class: OppositePerception, ns: BehaviourAPI.Core.Perceptions, asm: BehaviourAPI.Core}
+      data: 
+    - rid: 7475604281152504012
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: puz
+          methodName: fireIsClose
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 7475604281152504018
       type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 
+    - rid: 7475604281152504019
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: puz
+          methodName: Fuego
+    - rid: 7475604281152504023
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 7475604281152504024
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: puz
+          methodName: fireIsClose
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 7475604281152504026
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 7475604281152504027
+      type: {class: CustomPerception, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        init:
+          componentName: 
+          methodName: 
+        check:
+          componentName: puz
+          methodName: fireIsClose
+        reset:
+          componentName: 
+          methodName: 
+        pause:
+          componentName: 
+          methodName: 
+        unpause:
+          componentName: 
+          methodName: 
+    - rid: 7475604281152504083
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 7475604281152504084
+      type: {class: LeafNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 7475604281152504086
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: dfsd
+          methodName: sdfd
+    - rid: 7475604281152504089
+      type: {class: LoopUntilNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        TargetStatus: 2
+        MaxIterations: -1
