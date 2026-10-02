@@ -36,5 +36,14 @@
         }
 
         #endregion
+
+
+        #region ---------------------------------------- Build methods ---------------------------------------
+
+        public ExitTransition()
+        {
+            StatusFlags = (StatusFlags) - 1;
+        }
+        #endregion
     }
 }

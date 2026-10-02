@@ -40,7 +40,7 @@ namespace BehaviourAPI.StateMachines.StackFSMs
             else
                 throw new ArgumentException();
         }
-
+    
         #endregion
 
         #region --------------------------------------- Runtime methods --------------------------------------

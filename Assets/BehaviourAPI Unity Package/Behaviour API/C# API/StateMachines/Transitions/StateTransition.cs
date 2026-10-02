@@ -42,7 +42,11 @@ namespace BehaviourAPI.StateMachines
             else
                 throw new ArgumentException();
         }
-
+    public  StateTransition()
+        {
+         StatusFlags = (StatusFlags)-1;
+         //StatusFlags = StatusFlags.Failure | StatusFlags.Finished | StatusFlags.Running | StatusFlags.Paused | StatusFlags.Unfinished | StatusFlags.Active | StatusFlags.Success;
+        }
         #endregion
 
         #region --------------------------------------- Runtime methods --------------------------------------

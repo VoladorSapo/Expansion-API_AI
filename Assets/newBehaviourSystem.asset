@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: BehaviourAPI.UnityToolkit.GUIDesigner.Framework::BehaviourAPI.UnityToolkit.GUIDesigner.Framework.BehaviourSystem
   data:
     graphs:
-    - name: newbehaviourgraph
+    - name: A
       id: 1ac9f133-2d2f-49cc-855e-3cd87c7ba54c
       graph:
         rid: 3633840887034281984
@@ -52,7 +52,7 @@ MonoBehaviour:
         childIds: []
       - name: 
         id: 8b43fdde-3c43-4c54-98a0-a4f4f89fb798
-        position: {x: 1156.8, y: 369.6}
+        position: {x: 683.2, y: 167.20001}
         node:
           rid: 7475604281152504009
         references:
@@ -117,7 +117,25 @@ MonoBehaviour:
             Culture=neutral, PublicKeyToken=null
         parentIds: []
         childIds: []
-    - name: tree
+      - name: 
+        id: b6442fbe-6117-4c71-8c3c-f7838f9a352e
+        position: {x: 969.6, y: 351.19998}
+        node:
+          rid: 7475604415604588611
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+    - name: NewName
       id: 4dffc890-0f0c-42cc-8321-f0b1194fb88c
       graph:
         rid: 7475604281152504083
@@ -286,3 +304,7 @@ MonoBehaviour:
       data:
         TargetStatus: 2
         MaxIterations: -1
+    - rid: 7475604415604588611
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
