@@ -1,4 +1,5 @@
 using System;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
@@ -28,13 +29,19 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor
                 entry.Selected += ChangeSelectedEntry;
                 graphScrollView.Add(entry);
             }
+            changeGraphName();
         }
-
+        void changeGraphName()
+        {
+            if (SelectedEntry != null)
+                graphNameField.value = "new" + SelectedEntry.type.Name.ToLower() + "graph";
+        }
         private void ChangeSelectedEntry(GraphTypeEntry entry)
         {
             if (SelectedEntry != null) SelectedEntry.Unselect();
             SelectedEntry = entry;
             if (SelectedEntry != null) SelectedEntry.Select();
+            changeGraphName();
         }
 
         private void OnCreateButton()
