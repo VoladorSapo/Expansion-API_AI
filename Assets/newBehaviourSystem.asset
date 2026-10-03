@@ -161,12 +161,166 @@ MonoBehaviour:
         references: []
         parentIds: []
         childIds: []
+    - name: newbehaviourtreegraph
+      id: f478c18e-b767-486c-b212-477e7f7498bc
+      graph:
+        rid: 720721129250226180
+      nodes:
+      - name: 
+        id: 7189741a-9279-45fa-9f08-338963eafe0f
+        position: {x: 794.4, y: 270.4}
+        node:
+          rid: 720721129250226184
+        references: []
+        parentIds: []
+        childIds: []
+      - name: 
+        id: c865ea83-2e8c-404e-ba33-72d3bd812dd1
+        position: {x: 524.8, y: 212.79999}
+        node:
+          rid: 720721129250226185
+        references: []
+        parentIds: []
+        childIds: []
+    - name: newstackfsmgraph
+      id: 114f1078-8c60-47e7-b9b4-8b84a231c2ca
+      graph:
+        rid: 720721129250226186
+      nodes:
+      - name: 
+        id: 21ad5220-f44d-47c9-aea5-571218abd926
+        position: {x: 870.4, y: 312.8}
+        node:
+          rid: 720721129250226257
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 05ebefa5-dda3-4895-ad21-ecacd5ab2d31
+        position: {x: 593.60004, y: 184.80002}
+        node:
+          rid: 720721129250226258
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: b94d7d46-fc15-49aa-98b8-7ec3016842a1
+        position: {x: 1024.8, y: 260}
+        node:
+          rid: 720721129250226261
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 2509117e-92d6-4182-b73b-f57fc74a8c22
+        position: {x: 816, y: 108.00001}
+        node:
+          rid: 720721129250226262
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+      - name: 
+        id: 5af42a56-4175-4a5c-9d0b-421168659d45
+        position: {x: 1240.8, y: 192}
+        node:
+          rid: 720721129250226263
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
     pushPerceptions: []
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+    - rid: 720721129250226180
+      type: {class: BehaviourTree, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data: 
+    - rid: 720721129250226184
+      type: {class: ProbabilityBranchNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+        probabilities: []
+    - rid: 720721129250226185
+      type: {class: ParallelCompositeNode, ns: BehaviourAPI.BehaviourTrees, asm: BehaviourAPI.BehaviourTrees}
+      data:
+        IsRandomized: 0
+        finishOnSuccess: 0
+        finishOnFailure: 0
+    - rid: 720721129250226186
+      type: {class: StackFSM, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 720721129250226257
+      type: {class: PopTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -2
+    - rid: 720721129250226258
+      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 720721129250226261
+      type: {class: ExitTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+        ExitStatus: 0
+    - rid: 720721129250226262
+      type: {class: PopTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 720721129250226263
+      type: {class: PushTransition, ns: BehaviourAPI.StateMachines.StackFSMs, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
     - rid: 3633840887034281984
       type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
       data: 

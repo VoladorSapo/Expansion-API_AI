@@ -1,0 +1,60 @@
+PRIMER TFG: mejoras a la API
+SEGUNDO TFG: videojuego y demos de comportamiento de personajes
+
+
+pequeñas correcciones:
+----------------------
+
+*********** Copiar+pegar en GUI: requiere librería JSON (licencia? newtonsoft, creemos que Unity lo usa ya internamente) <- implementado a falta de pruebas exhaustivas
+
+- Cambiar nombre a grafo ya creado y cambiar nombre por defecto
+- Corrección de línea 220
+- En GUI, cuando se crea una percepción que por defecto tenga status flags EVERYTHING
+- compatibilidad webgl: investigar qué pasa
+
+- Comprobar funcionamiento en UNity 6000.3.17f1
+
+
+nuevos nodos y funciones:
+-------------------------
+
+- SWITCH NODE: nuevo nodo composición
+	+ atributo booleano: Reactivo si/no <- si es única ejecución o continua 
+		* si ejecución continua: termina si el hijo termina
+	+ Se le van añadiendo CASEs, que pueden ser de tipo: mayor, menor, igual; y un valor
+	+ visualmente en el gui se ve la condición de cada case en la arista que conecta los nodos
+
+- Inercia en US: que el float no sea una constante, sino que lo devuelva una función. 
+	+ verificar que está implementado cooldown
+
+- percepciones PUSH: investigar como están implementadas, y como se pueden mejorar (especialmente para BT y US)
+
+
+COSAS NUEVAS GRANDES:
+---------------------
+
+- simplificar y documentar SMART OBJECTS: y pensar en posibilidad de GUI
+- GOAP : buscar yo apuntes del curso en el que se impartió
+
+FUTURO:
+-------
+
+- fuzzy FSM
+- qlearning
+- redes bayesianas : lo investigo yo
+
+
+menos prioritario:
+------------------
+- BT: Posibilidad de un nodo con dos padres <- tiene sentido? se puede hacer lo mismo con asset subgraph
+- Nodo RESTART que reinicia el árbol
+- Mejorar Autolayout para FSM (y para US?)
+- En lugar de poner nombres de funciones en GUI, que se desplieguen los objetos y sus funciones en el GUI
+
+
+HECHO:
+------
+- SUS del año pasado (me va a enviar para pasarlo a los de este curso)
+- 
+
+
