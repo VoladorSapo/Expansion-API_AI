@@ -2,6 +2,8 @@
 
 namespace BehaviourAPI.BehaviourTrees
 {
+    [System.Serializable]
+
     /// <summary>
     /// Branch selection node that chooses one of its branches randomly.
     /// </summary>

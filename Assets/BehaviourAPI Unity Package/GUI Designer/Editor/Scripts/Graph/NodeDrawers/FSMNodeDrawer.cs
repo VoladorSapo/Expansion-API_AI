@@ -9,6 +9,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
     using Core;
     using StateMachines;
     using Framework;
+    using BehaviourAPI.StateMachines.StackFSMs;
 
     [CustomNodeDrawer(typeof(FSMNode))]
     public class FSMNodeDrawer : NodeDrawer
@@ -32,7 +33,6 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             else if (node is Transition)
             {
                 view.SetColor(BehaviourAPISettings.instance.TransitionColor);
-                view.SetIconText($"Transition");
                 view.AddExtensionView("statusFlags");
             }
 
@@ -287,7 +287,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                 taskView.Update("Check " + flagsDisplay);
                 if (t is ExitTransition exit)
                 {
-                    view.SetIconText($"Exit ({exit.ExitStatus})");
+                    view.SetIconText(exit.className());
                 }
             }
         }

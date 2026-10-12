@@ -5,12 +5,14 @@ namespace BehaviourAPI.StateMachines.StackFSMs
     using Core;
     using Core.Actions;
     using Core.Perceptions;
+    [System.Serializable]
 
     /// <summary>
     /// Subclass of fsm that stores its actived states in a stack, and can push and pop these states.
     /// </summary>
     public class StackFSM : FSM
     {
+
         #region -------------------------------------- Private variables -------------------------------------
 
         Stack<State> _stateStack = new Stack<State>();

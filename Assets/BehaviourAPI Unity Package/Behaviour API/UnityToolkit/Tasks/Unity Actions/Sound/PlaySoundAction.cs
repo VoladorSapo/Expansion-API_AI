@@ -7,6 +7,8 @@ namespace BehaviourAPI.UnityToolkit
     /// Action that plays an specified sound and finish when the clip ends.
     /// </summary>
     [SelectionGroup("Sound")]
+    [System.Serializable]
+
     public class PlaySoundAction : UnityAction
     {
         /// <summary>

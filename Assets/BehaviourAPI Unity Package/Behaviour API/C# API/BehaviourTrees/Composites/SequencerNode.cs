@@ -17,5 +17,10 @@ namespace BehaviourAPI.BehaviourTrees
         {
             return status;
         }
+
+        public override string className()
+        {
+            return "-->";
+        }
     }
 }

@@ -3,25 +3,25 @@
 namespace BehaviourAPI.Core.Perceptions
 {
     [System.Serializable]
-    public class OppositePerception : CompoundPerception
+    public class NotPerception : CompoundPerception
     {
       
         /// <summary>
         /// Create a new or perception.
         /// </summary>
-        public OppositePerception() : base() { }
+        public NotPerception() : base() { }
 
         /// <summary>
         /// Create a new or perception.
         /// </summary>
         /// <param name="perceptions">The list of subperceptions.</param>
-        public OppositePerception(List<Perception> perceptions) : base(perceptions) { }
+        public NotPerception(List<Perception> perceptions) : base(perceptions) { }
 
         /// <summary>
         /// Create a new or perception.
         /// </summary>
         /// <param name="perceptions">The list of subperceptions.</param>
-        public OppositePerception(params Perception[] perceptions) : base(perceptions) { }
+        public NotPerception(params Perception[] perceptions) : base(perceptions) { }
 
         public override bool allowMultiple()
         {

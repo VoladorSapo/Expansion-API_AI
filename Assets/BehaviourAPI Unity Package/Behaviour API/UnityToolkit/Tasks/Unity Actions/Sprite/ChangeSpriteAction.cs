@@ -1,4 +1,5 @@
 using BehaviourAPI.Core;
+using System;
 using UnityEngine;
 
 namespace BehaviourAPI.UnityToolkit
@@ -9,12 +10,13 @@ namespace BehaviourAPI.UnityToolkit
     /// revert the sprite value. Otherwise the action will end inmediatly.
     /// </summary>
     [SelectionGroup("SPRITE")]
+    [Serializable]
     public class ChangeSpriteAction : UnityAction
     {
         /// <summary>
         /// The sprite applied to the renderer.
         /// </summary>
-        [SerializeField] Sprite sprite;
+        [SerializeField] public Sprite sprite;
 
         /// <summary>
         /// The time to finish the action and revert the value.

@@ -67,6 +67,10 @@ namespace BehaviourAPI.StateMachines
             }
             return canBePerformed;
         }
+        public override string className()
+        {
+            return "Transition";
+        }
 
         #endregion
     }

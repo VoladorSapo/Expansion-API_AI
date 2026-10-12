@@ -14,10 +14,12 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
     using BehaviourAPI.StateMachines;
     using Codice.Client.Commands.WkTree;
     using Framework;
+    using SimpleJSON;
     using System.Drawing.Printing;
     using System.Linq;
     using System.Security.Cryptography;
-    
+    using UnityEditor.PackageManager;
+
 
     /// <summary>
     /// Class used to represent the nodes of a <see cref="GraphData"/> element in a editor window.
@@ -47,6 +49,8 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
         public Action<string> UndoRegisterOperationPerformed { get; set; }
 
         public IEdgeConnectorListener Connector => m_EdgeConnectorListener;
+
+        JsonSerializerSettings settings;
 
         #endregion
 
@@ -97,14 +101,24 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             m_EdgeConnectorListener = new CustomEdgeConnector<EdgeView>(OnEdgeCreated, OnEdgeCreatedOutsidePort);
 
             // Events
-            serializeGraphElements += CopyElements;
+            serializeGraphElements += CopyOperation;
             unserializeAndPaste += PasteOperation;
+
             canPasteSerializedData += CanPaste;
 
             nodeCreationRequest = HandleNodeCreationCall;
             graphViewChanged = HandleGraphViewChanged;
             m_EditorWindow = editorWindow;
             Undo.undoRedoPerformed += ReloadView;
+
+            settings = new JsonSerializerSettings
+            {
+                TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                ContractResolver = new NewContractResolver(),
+                Converters = { new UnityObjectConverter() },
+                Error = { }
+            };
         }
 
         private void ReloadView()
@@ -286,11 +300,6 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
         private NodeData CopyNode(NodeData ogNode)
         {
             Debug.Log(ogNode.id);
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-            };
             NodeData newData = ogNode.DeepCopy(settings);
             newData.id = Guid.NewGuid().ToString();
             Debug.Log("old ID: "+ogNode.id);
@@ -467,10 +476,26 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             if (evt.target is GraphView || evt.target is Node || evt.target is Group)
             {
                 evt.menu.AppendSeparator();
+                evt.menu.AppendAction("Copy.", delegate
+                {
+                    CopySelectionCallback();
+                }, (DropdownMenuAction a) => canCopySelection ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendAction("Paste", delegate
+                {
+                    PasteCallback();
+                }, (DropdownMenuAction a) => canPaste ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendAction("Cut", delegate
+                {
+                    CutSelectionCallback();
+                }, (DropdownMenuAction a) => canCopySelection ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendAction("Duplicate", delegate
                 {
                     DuplicateSelectionCallback();
                 }, (DropdownMenuAction a) => canDuplicateSelection ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendAction("Delete", delegate
+                {
+                    DeleteSelectionCallback(AskUser.DontAskUser);
+                }, (DropdownMenuAction a) => canDeleteSelection ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendSeparator();
             }
 
@@ -489,39 +514,44 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             public string name;
         }
 
-        private string CopyElements(IEnumerable<GraphElement> elements)
+        private string CopyOperation(IEnumerable<GraphElement> elements)
         {
             string data = string.Empty;
             List<string> nodeList = new List<string>();
+            ClipboardData clipboardData = new ClipboardData();
+            clipboardData.mostRestrictiveNodeType = typeof(BehaviourAPI.Core.BehaviourGraph);
          //   List<string> datalist = new List<string>();
-            var settings = new JsonSerializerSettings
-            {
-                TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
-                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-
-            };
             foreach (GraphElement element in elements)
             {
                 Debug.Log(element);
-                EdgeView edgeView = element as EdgeView;
-                if (edgeView != null)
-                {
-                    NodeView input = (NodeView)edgeView.input.node;
-                    NodeView output = (NodeView)edgeView.output.node;
+                //EdgeView edgeView = element as EdgeView;
+                //if (edgeView != null)
+                //{
+                //    NodeView input = (NodeView)edgeView.input.node;
+                //    NodeView output = (NodeView)edgeView.output.node;
 
-                    Debug.Log(input.data.id);
-                    Debug.Log(output.data.id);
+                //    Debug.Log(input.data.id);
+                //    Debug.Log(output.data.id);
 
-                }
+                //}
                 NodeView view = element as NodeView;
                 if (view != null)
                 {
-                    nodeList.Add(JsonConvert.SerializeObject(view.data, settings));
+                    if (view.data.node.GraphType.IsSubclassOf(clipboardData.mostRestrictiveNodeType))
+                    {
+                        clipboardData.mostRestrictiveNodeType = view.data.node.GraphType;
+                    }
+                    Debug.Log(view.data);
+                    string s = JsonConvert.SerializeObject(view.data, settings);
+                    Debug.Log(s);
+                    nodeList.Add(s);
                 }
             }
-            data = JsonConvert.SerializeObject(nodeList.ToArray(), settings);
+            clipboardData.data = nodeList.ToArray();
+            data = JsonConvert.SerializeObject(clipboardData, settings);
             return data;
         }
+
         private void PasteOperation(string operationName, string data)
         {
             Debug.Log(data);
@@ -531,13 +561,9 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
               //data=  data.Substring(1, data.Length - 1);
                 //data.Remove(data.Length - 1);
                 //data.Remove(0);
-                var settings = new JsonSerializerSettings
-                {
-                    TypeNameHandling = TypeNameHandling.Auto, // writes $type for polymorphic fields
-                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore
-                };
+               ClipboardData clipboardData= JsonConvert.DeserializeObject<ClipboardData>(data, settings);
 
-                string[] datalist = JsonConvert.DeserializeObject<string[]>(data, settings);
+                string[] datalist = clipboardData.data;
 
                 //NodeData nodeData = new NodeData();
                 //EditorJsonUtility.FromJsonOverwrite(data, nodeData);
@@ -596,7 +622,6 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                     swapFromDictionary(oldIdtoNewId, nodeData.childIds);
                     swapFromDictionary(oldIdtoNewId, nodeData.parentIds);
                 }
-
             }
 
             m_CurrentGraphNodesProperty.serializedObject.Update();
@@ -610,12 +635,36 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                 if (node != null)
                     AddToSelection(node);
             }
+            CopySelectionCallback();
         }
-        private bool CanPaste(string data)
+        public bool CanPaste(string data)
         {
-            Debug.Log("CAN PASTE"+data);
+            Debug.Log(data);
+            try
+            {
+                ClipboardData clipboardData = JsonConvert.DeserializeObject<ClipboardData>(data, settings);
+                if (clipboardData == null || clipboardData.mostRestrictiveNodeType == null || clipboardData.data == null)
+                    return false;
+                return checkGraphType(clipboardData.mostRestrictiveNodeType);
+            }
+            catch
+            {
+                return false;
+            }
+           
+        }
 
-            return true;
+        private Type getGraphType()
+        {
+            return graphData.graph.GetType();
+        }
+        private bool checkGraphType(Type clipboardType)
+        {
+            if (getGraphType().Equals(clipboardType) || getGraphType().IsSubclassOf(clipboardType))
+            {
+                return true;
+            }
+            return false;
         }
         private void swapFromDictionary(Dictionary<string, string> dict,List<string> list)
         {
@@ -703,7 +752,29 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
             else m_Minimap.Disable();
         }
 
+        internal void DuplicateSelection()
+        {
+            DuplicateSelectionCallback();
+        }
+
+        internal void CopySelection()
+        {
+            CopySelectionCallback();
+        }
+        internal void PasteSelection()
+        {
+            PasteCallback();
+        }
+        internal void CutSelection()
+        {
+            CutSelectionCallback();
+        }
+        internal bool canPasteSelection() { return canPaste; }
         #endregion
     }
-
+    public class ClipboardData
+    {
+       public Type mostRestrictiveNodeType;
+       public string[] data;
+    }
 }

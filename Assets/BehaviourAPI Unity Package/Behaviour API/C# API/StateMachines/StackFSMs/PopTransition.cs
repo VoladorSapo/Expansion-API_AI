@@ -1,8 +1,11 @@
 ﻿namespace BehaviourAPI.StateMachines.StackFSMs
 {
+    [System.Serializable]
+
     /// <summary>
     /// Stack Transition that returns to the last state saved in the stack of the stack fsm.
     /// </summary>
+
     public class PopTransition : StackTransition
     {
         #region ------------------------------------------ Properties -----------------------------------------

@@ -1,11 +1,15 @@
 ﻿namespace BehaviourAPI.StateMachines
 {
+
     using Core;
+    [System.Serializable]
+
     /// <summary>
     /// Transition that end the execution of the fsm.
     /// </summary>
     public class ExitTransition : Transition
     {
+
         #region ------------------------------------------ Properties -----------------------------------------
         public override int MaxOutputConnections => 0;
 
@@ -43,6 +47,11 @@
         public ExitTransition()
         {
             StatusFlags = (StatusFlags) - 1;
+        }
+
+        public override string className()
+        {
+            return $"Exit ({ExitStatus})";
         }
         #endregion
     }

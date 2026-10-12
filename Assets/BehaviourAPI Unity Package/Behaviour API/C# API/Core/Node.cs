@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using UnityEngine;
 namespace BehaviourAPI.Core
 {
     /// <summary> 
@@ -45,6 +45,10 @@ namespace BehaviourAPI.Core
         /// </summary>
         /// <value> The number of elements in parent node list. </value>
         public int ParentCount => Parents.Count;
+
+        [HideInInspector]
+        public virtual string className() => GetType().Name;
+
 
         #endregion
 

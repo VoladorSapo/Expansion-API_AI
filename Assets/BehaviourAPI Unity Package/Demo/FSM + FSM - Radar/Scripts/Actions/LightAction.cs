@@ -1,8 +1,10 @@
 using BehaviourAPI.Core;
+using System;
 using UnityEngine;
 
 namespace BehaviourAPI.UnityToolkit.Demos
 {
+    [Serializable]
     [SelectionGroup("DEMO - Radar")]
     public class LightAction : UnityAction
     {

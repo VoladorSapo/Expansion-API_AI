@@ -9,6 +9,8 @@ namespace BehaviourAPI.UnityToolkit
     /// Action that moves the agent along a path.
     /// </summary>
     [SelectionGroup("MOVEMENT")]
+    [System.Serializable]
+
     public class PathingAction : UnityAction
     {
         /// <summary>

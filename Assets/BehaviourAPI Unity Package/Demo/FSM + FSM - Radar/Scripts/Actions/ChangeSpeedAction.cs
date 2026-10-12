@@ -4,6 +4,8 @@ namespace BehaviourAPI.UnityToolkit.Demos
 {
     using BehaviourAPI.Core;
 
+    [System.Serializable]
+
     [SelectionGroup("DEMO - Radar")]
     public class ChangeSpeedAction : UnityAction
     {

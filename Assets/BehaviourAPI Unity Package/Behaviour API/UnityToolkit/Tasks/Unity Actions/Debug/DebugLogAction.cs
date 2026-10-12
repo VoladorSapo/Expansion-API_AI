@@ -8,6 +8,8 @@ namespace BehaviourAPI.UnityToolkit
     /// Action to print a message in the debug console.
     /// </summary>
     [SelectionGroup("DEBUG")]
+    [System.Serializable]
+
     public class DebugLogAction : UnityAction
     {
         /// <summary>

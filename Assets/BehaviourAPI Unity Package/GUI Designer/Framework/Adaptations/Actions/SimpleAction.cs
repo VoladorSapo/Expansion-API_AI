@@ -1,5 +1,6 @@
 namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
 {
+    [System.Serializable]
     public class SimpleAction : Core.Actions.SimpleAction, IBuildable
     {
         public ContextualSerializedAction method;

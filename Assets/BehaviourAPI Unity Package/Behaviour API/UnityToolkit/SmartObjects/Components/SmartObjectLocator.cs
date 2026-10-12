@@ -57,7 +57,7 @@ namespace BehaviourAPI.UnityToolkit
         {
             _availableSmartObjects.Clear();
 
-            SmartObject[] allSmartObjects = FindObjectsOfType<SmartObject>();
+            SmartObject[] allSmartObjects = FindObjectsByType<SmartObject>(FindObjectsSortMode.None);
 
             foreach (SmartObject obj in allSmartObjects)
             {

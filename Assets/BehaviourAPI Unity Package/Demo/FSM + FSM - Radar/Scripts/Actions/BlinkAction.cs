@@ -4,11 +4,14 @@ using UnityEngine.UI;
 namespace BehaviourAPI.UnityToolkit.Demos
 {
     using Core;
+    using System;
 
     /// <summary>
     /// Custom action that makes a light blink.
     /// </summary>
     /// 
+    [Serializable]
+
     [SelectionGroup("DEMO - Radar")]
     public class BlinkAction : UnityAction
     {

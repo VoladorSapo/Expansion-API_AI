@@ -163,7 +163,7 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
         {
             m_NameInputField.value = data.name;
 
-            SetIconText(data.node.TypeName().CamelCaseToSpaced());
+            SetIconText(data.node.className().CamelCaseToSpaced());
 
             if (nodeProperty != null)
             {
@@ -447,9 +447,15 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                     (InputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
                 evt.menu.AppendAction("Disconnect all output edges.", _ => DisconnectAllOutput(),
                     (OutputConnectionViews.Count > 0) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
-                evt.menu.AppendAction("Duplicate.", _ => Duplicate(),
-                DropdownMenuAction.Status.Normal);
                 evt.menu.AppendSeparator();
+                evt.menu.AppendAction("Copy.", _ => graphView.CopySelection());
+                evt.menu.AppendAction("Paste.", _ => graphView.PasteSelection(), (graphView.canPasteSelection()) ? DropdownMenuAction.Status.Normal : DropdownMenuAction.Status.Disabled);
+                evt.menu.AppendAction("Cut.", _ => graphView.CutSelection());
+                evt.menu.AppendAction("Duplicate.", _ => graphView.DuplicateSelection());
+                evt.menu.AppendAction("Delete.", _ => graphView.DeleteSelection());
+
+                evt.menu.AppendSeparator();
+
                 evt.menu.AppendAction("Print ID.", _ => { Debug.Log(data.id); },
           DropdownMenuAction.Status.Normal);
                 evt.menu.AppendSeparator();

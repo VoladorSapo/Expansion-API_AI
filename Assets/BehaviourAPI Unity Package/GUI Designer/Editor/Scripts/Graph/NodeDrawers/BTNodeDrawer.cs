@@ -25,8 +25,8 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Editor.Graphs
                     break;
                 case CompositeNode:
                     view.SetColor(BehaviourAPISettings.instance.CompositeColor);
-                    if (node is SequencerNode) view.SetIconText("-->");
-                    else if (node is SelectorNode) view.SetIconText("?");
+                    //if (node is SequencerNode) view.SetIconText("-->");
+                    //else if (node is SelectorNode) view.SetIconText("?");
                     break;
                 case DecoratorNode:
                     view.SetColor(BehaviourAPISettings.instance.DecoratorColor);

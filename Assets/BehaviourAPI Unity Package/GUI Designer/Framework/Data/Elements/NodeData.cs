@@ -54,6 +54,10 @@ namespace BehaviourAPI.UnityToolkit.GUIDesigner.Framework
         /// </summary>
         [HideInInspector] public List<string> childIds = new List<string>();
 
+        /// <summary>
+        /// A more readable name for the class that can be used when showing node type to users. State Transition -> Transtion | Exit Transiton -> Exit(exit state)
+        /// </summary>
+
         public NodeData(Type type, Vector2 position)
         {
             this.position = position;
