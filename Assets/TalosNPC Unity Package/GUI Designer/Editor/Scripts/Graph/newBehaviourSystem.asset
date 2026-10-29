@@ -1,0 +1,155 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db249917b7c50574eaa600c74aff1437, type: 3}
+  m_Name: newBehaviourSystem
+  m_EditorClassIdentifier: BehaviourAPI.UnityToolkit.GUIDesigner.Framework::BehaviourAPI.UnityToolkit.GUIDesigner.Framework.BehaviourSystem
+  data:
+    graphs:
+    - name: newfsmgraph
+      id: 20eb065c-1a24-4263-b234-a03061ef74fa
+      graph:
+        rid: 720721678467596366
+      nodes:
+      - name: 
+        id: b43a1703-517a-4ba8-ae9b-0b3a4b5230fb
+        position: {x: 523.46924, y: 282.55322}
+        node:
+          rid: 720721678467596367
+        references:
+        - fieldName: Action
+          value:
+            rid: 720721678467596368
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - c9b2bb32-bdac-4e60-bd10-2e9d2ce48e90
+        childIds:
+        - 6b503e38-0f76-4c75-b25f-73b549e25893
+      - name: 
+        id: 7c9b67d0-d5e1-49ec-bb00-df39a9ffcc47
+        position: {x: 929.7476, y: 274.2303}
+        node:
+          rid: 720721678467596369
+        references:
+        - fieldName: Action
+          value:
+            rid: 720721678467596370
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 6b503e38-0f76-4c75-b25f-73b549e25893
+        childIds:
+        - c9b2bb32-bdac-4e60-bd10-2e9d2ce48e90
+      - name: 
+        id: 6b503e38-0f76-4c75-b25f-73b549e25893
+        position: {x: 730.7871, y: 482.36044}
+        node:
+          rid: 720721678467596371
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - b43a1703-517a-4ba8-ae9b-0b3a4b5230fb
+        childIds:
+        - 7c9b67d0-d5e1-49ec-bb00-df39a9ffcc47
+      - name: 
+        id: c9b2bb32-bdac-4e60-bd10-2e9d2ce48e90
+        position: {x: 722.4742, y: 76.27912}
+        node:
+          rid: 720721678467596373
+        references:
+        - fieldName: Perception
+          value:
+            rid: 720721678467596374
+          fieldType: BehaviourAPI.Core.Perceptions.Perception, BehaviourAPI.Core,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 7c9b67d0-d5e1-49ec-bb00-df39a9ffcc47
+        childIds:
+        - b43a1703-517a-4ba8-ae9b-0b3a4b5230fb
+      - name: 
+        id: a94c4671-3dba-47e3-ad1f-6cae549c564f
+        position: {x: 1154.8, y: 219.6}
+        node:
+          rid: 720721678467596375
+        references:
+        - fieldName: Action
+          value:
+            rid: 720721678467596383
+          fieldType: BehaviourAPI.Core.Actions.Action, BehaviourAPI.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds: []
+    pushPerceptions: []
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 720721678467596366
+      type: {class: FSM, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 720721678467596367
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 720721678467596368
+      type: {class: DebugLogAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        message: Lejos
+    - rid: 720721678467596369
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 720721678467596370
+      type: {class: DebugLogAction, ns: BehaviourAPI.UnityToolkit, asm: BehaviourAPI.UnityToolkit}
+      data:
+        message: Cerca
+    - rid: 720721678467596371
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 720721678467596373
+      type: {class: StateTransition, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 720721678467596374
+      type: {class: CompoundPerceptionWrapper, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        compoundPerception:
+          rid: 720721678467596376
+        subPerceptions:
+        - perception:
+            rid: -2
+    - rid: 720721678467596375
+      type: {class: State, ns: BehaviourAPI.StateMachines, asm: BehaviourAPI.StateMachines}
+      data: 
+    - rid: 720721678467596376
+      type: {class: NotPerception, ns: BehaviourAPI.Core.Perceptions, asm: BehaviourAPI.Core}
+      data: 
+    - rid: 720721678467596383
+      type: {class: SimpleAction, ns: BehaviourAPI.UnityToolkit.GUIDesigner.Framework, asm: BehaviourAPI.UnityToolkit.GUIDesigner.Framework}
+      data:
+        method:
+          componentName: fg
+          methodName: hff

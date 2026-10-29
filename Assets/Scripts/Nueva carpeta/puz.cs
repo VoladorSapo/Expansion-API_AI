@@ -18,7 +18,7 @@ public class puz : MonoBehaviour
     public void Fuego()
     {
        
-            print("FUEGO, en el monte de venus");
+            print("FUEGO, en el monte de venus ");
         
     }
 
