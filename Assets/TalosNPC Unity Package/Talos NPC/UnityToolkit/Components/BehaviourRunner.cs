@@ -4,6 +4,7 @@ namespace TalosNPC.UnityToolkit
 {
     using TalosNPC.Core;
     using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Base class for all behaviour system runners
@@ -21,6 +22,7 @@ namespace TalosNPC.UnityToolkit
         bool _systemRunning;
 
         BehaviourGraph _executionGraph;
+
 
         /// <summary>
         /// Override this method to set the context that the graph will use.
@@ -61,6 +63,7 @@ namespace TalosNPC.UnityToolkit
         /// </summary>
         protected virtual void Init()
         {
+            UnityEngine.Debug.Log("Init Runner"+name);
             _executionGraph = CreateGraph();
 
             if (_executionGraph != null)
@@ -169,5 +172,7 @@ namespace TalosNPC.UnityToolkit
                 _executionGraph.Start();
             }
         }
+
+       
     }
 }

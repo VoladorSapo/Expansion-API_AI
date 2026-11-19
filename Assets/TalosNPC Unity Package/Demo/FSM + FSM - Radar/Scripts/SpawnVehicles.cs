@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/SpawnVehicles")]
+
     public class SpawnVehicles : MonoBehaviour
     {
         #region variables

@@ -2,6 +2,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
 {
     using Core.Perceptions;
     using System.Collections.Generic;
+    using UnityEngine;
 
     /// <summary>
     /// Adaptation class for use custom <see cref="ConditionPerception"/> in editor tools.
@@ -54,7 +55,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
         public void Build(BSBuildingInfo data)
         {
             onInit = init.CreateDelegate(data.Runner);
-            onCheck = check.CreateDelegate(data.Runner);
+            onCheck = check.CreateDelegate(data.Runner, () => { Debug.LogError("The check CustomPerception is empty"); return false; });
             onReset = reset.CreateDelegate(data.Runner);
             onPause = pause.CreateDelegate(data.Runner);
             onUnpause = unpause.CreateDelegate(data.Runner);

@@ -1,13 +1,14 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit
 {
-    public class TextTalkComponent : MonoBehaviour, ITalkComponent
+    [AddComponentMenu("Talos NPC/Components/TMProTalkComponent")]
+
+    public class TMProTalkComponent : MonoBehaviour, ITalkComponent
     {
-        [SerializeField] Text textComponent;
+        [SerializeField] TextMeshProUGUI textComponent;
 
         [SerializeField] float _textSpeed = 30f;
 

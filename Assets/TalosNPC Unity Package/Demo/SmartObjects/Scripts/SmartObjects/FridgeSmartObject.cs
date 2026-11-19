@@ -7,6 +7,8 @@ using System.Collections.Generic;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/FridgeSmartObject")]
+
     public class FridgeSmartObject : DirectSmartObject
     {
         [SerializeField] float useTime = 3f;

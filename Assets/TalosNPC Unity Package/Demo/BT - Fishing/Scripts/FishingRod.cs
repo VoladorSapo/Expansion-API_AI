@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/FishingRod")]
+
     public class FishingRod : MonoBehaviour
     {
         Animator _animator;

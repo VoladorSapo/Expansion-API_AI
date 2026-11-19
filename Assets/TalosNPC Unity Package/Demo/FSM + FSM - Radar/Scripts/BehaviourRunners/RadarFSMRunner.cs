@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/RadarFSMRunner")]
+
     public class RadarFSMRunner : BehaviourRunner, IRadar
     {
         State _brokenState, _workingState;

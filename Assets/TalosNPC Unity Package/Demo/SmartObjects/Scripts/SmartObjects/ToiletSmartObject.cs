@@ -7,6 +7,8 @@ namespace TalosNPC.UnityToolkit.Demos
     using TalosNPC.SmartObjects;
     using Core;
 
+    [AddComponentMenu("Talos NPC/Demos/ToiletSmartObject")]
+
     public class ToiletSmartObject : DirectSmartObject
     {
         [Tooltip("The position where the agent")]

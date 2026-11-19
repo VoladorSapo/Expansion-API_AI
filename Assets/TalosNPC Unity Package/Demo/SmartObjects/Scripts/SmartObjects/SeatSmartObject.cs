@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/SeatSmartObject")]
+
     public class SeatSmartObject : DirectSmartObject
     {
         private static float k_DefaultUseTime = 5f;

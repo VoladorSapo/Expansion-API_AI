@@ -5,6 +5,8 @@ using System.Collections.Generic;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/ComputerDesktopSmartObject")]
+
     public class ComputerDesktopSmartObject : SmartObject
     {
         [SerializeField] Transform target;

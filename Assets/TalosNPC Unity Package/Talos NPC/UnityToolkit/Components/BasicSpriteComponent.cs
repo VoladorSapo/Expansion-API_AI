@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit
 {
+    [AddComponentMenu("Talos NPC/Components/BasicSpriteComponent",100)]
+
     public class BasicSpriteComponent : MonoBehaviour, IRendererComponent
     {
         [SerializeField] SpriteRenderer spriteRenderer;

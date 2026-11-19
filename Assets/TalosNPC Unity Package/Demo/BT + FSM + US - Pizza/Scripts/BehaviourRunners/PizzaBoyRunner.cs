@@ -11,6 +11,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PizzaBoyRunner")]
+
     public class PizzaBoyRunner : BehaviourRunner
     {
         [SerializeField] Ingredient _pizzaMass;

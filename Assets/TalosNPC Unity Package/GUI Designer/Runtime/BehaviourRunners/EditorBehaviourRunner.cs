@@ -7,7 +7,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
     /// <summary>
     /// Subclass of  <see cref="BehaviourRunner"/> used to edit a behaviour runner with the editor tools.
     /// </summary>
-     [AddComponentMenu("Talos NPC/EditorBehaviourRunner")]
+     [AddComponentMenu("Talos NPC/EditorBehaviourRunner",-10)]
     public class EditorBehaviourRunner : DataBehaviourRunner
     {
         #region ------------------------------- Private fields --------------------------------

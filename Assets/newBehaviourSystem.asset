@@ -13,8 +13,84 @@ MonoBehaviour:
   m_Name: newBehaviourSystem
   m_EditorClassIdentifier: TalosNPC.UnityToolkit.GUIDesigner.Framework::TalosNPC.UnityToolkit.GUIDesigner.Framework.BehaviourSystem
   data:
-    graphs: []
+    graphs:
+    - name: newfsmgraph
+      id: cc207e44-616e-4057-9525-9e6a6b0fd3ce
+      graph:
+        rid: 720721751454253146
+      nodes:
+      - name: 
+        id: 802295a0-ba02-4ad5-bf41-e0cce8828c63
+        position: {x: 635.6, y: 340.4}
+        node:
+          rid: 720721751454253147
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: TalosNPC.Core.Actions.Action, TalosNPC.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds: []
+        childIds:
+        - 01333477-d775-49bf-ade6-fc8a1361108f
+      - name: 
+        id: 01333477-d775-49bf-ade6-fc8a1361108f
+        position: {x: 810.8, y: 143.6}
+        node:
+          rid: 720721751454253148
+        references:
+        - fieldName: Perception
+          value:
+            rid: -2
+          fieldType: TalosNPC.Core.Perceptions.Perception, TalosNPC.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: TalosNPC.Core.Actions.Action, TalosNPC.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 802295a0-ba02-4ad5-bf41-e0cce8828c63
+        childIds:
+        - 7823d744-e239-407b-8198-73b92b6680e9
+      - name: 
+        id: 7823d744-e239-407b-8198-73b92b6680e9
+        position: {x: 1065.2, y: 245.19998}
+        node:
+          rid: 720721751454253149
+        references:
+        - fieldName: Action
+          value:
+            rid: -2
+          fieldType: TalosNPC.Core.Actions.Action, TalosNPC.Core, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        parentIds:
+        - 01333477-d775-49bf-ade6-fc8a1361108f
+        childIds: []
+    - name: newbehaviourtreegraph
+      id: 3e70cdf3-3bd4-4313-9a9c-846b3dd019a6
+      graph:
+        rid: 720721751454253126
+      nodes: []
     pushPerceptions: []
   references:
     version: 2
-    RefIds: []
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+    - rid: 720721751454253126
+      type: {class: BehaviourTree, ns: TalosNPC.BehaviourTrees, asm: TalosNPC.BehaviourTrees}
+      data: 
+    - rid: 720721751454253146
+      type: {class: FSM, ns: TalosNPC.StateMachines, asm: TalosNPC.StateMachines}
+      data: 
+    - rid: 720721751454253147
+      type: {class: State, ns: TalosNPC.StateMachines, asm: TalosNPC.StateMachines}
+      data: 
+    - rid: 720721751454253148
+      type: {class: StateTransition, ns: TalosNPC.StateMachines, asm: TalosNPC.StateMachines}
+      data:
+        StatusFlags: -1
+    - rid: 720721751454253149
+      type: {class: State, ns: TalosNPC.StateMachines, asm: TalosNPC.StateMachines}
+      data: 

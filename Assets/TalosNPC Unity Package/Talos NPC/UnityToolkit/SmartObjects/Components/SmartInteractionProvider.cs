@@ -6,6 +6,9 @@ namespace TalosNPC.UnityToolkit
     using Core.Actions;
     using System.Collections.Generic;
 
+
+    [AddComponentMenu("Talos NPC/Smart Objects/SmartInteractionProvider")]
+
     public abstract class SmartInteractionProvider : MonoBehaviour
     {
         [SerializeField] NeedMap capabilities;

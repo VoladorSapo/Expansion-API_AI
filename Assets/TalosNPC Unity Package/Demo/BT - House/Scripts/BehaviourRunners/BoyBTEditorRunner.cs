@@ -8,6 +8,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/BoyBTEditorRunner")]
+
     public class BoyBTEditorRunner : EditorBehaviourRunner
     {
         [SerializeField] AudioClip doorOpenClip;

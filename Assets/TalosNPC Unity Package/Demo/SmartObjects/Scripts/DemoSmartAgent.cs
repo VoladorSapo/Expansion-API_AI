@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Talos NPC/Demos/DemoSmartAgent")]
+
 public class DemoSmartAgent : SmartAgent
 {
     [SerializeField, Range(10f, 200f)] float leisureTime;

@@ -1,3 +1,5 @@
+using UnityEngine;
+
 namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
 {
     [System.Serializable]
@@ -7,7 +9,8 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
 
         public void Build(BSBuildingInfo data)
         {
-            action = method.CreateDelegate(data.Runner);
+            action = method.CreateDelegate(data.Runner, () => Debug.LogError("The method or component in SimpleAction is empty"));
+            
         }
 
         public override object Clone()

@@ -8,6 +8,9 @@ namespace TalosNPC.UnityToolkit
     /// <summary>
     /// Unity component that implements the ISmartAgent interface.
     /// </summary>
+    /// 
+    [AddComponentMenu("Talos NPC/Smart Objects/SmartAgent")]
+
     public class SmartAgent : MonoBehaviour, ISmartAgent
     {
         [SerializeField] SmartAgentSettings _settings;

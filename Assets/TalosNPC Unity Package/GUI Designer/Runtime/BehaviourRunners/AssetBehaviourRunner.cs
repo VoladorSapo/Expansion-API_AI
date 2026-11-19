@@ -7,7 +7,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
     /// Subclass of  <see cref="BehaviourRunner"/> that executes a reusable <see cref="BehaviourSystem"/> 
     /// </summary>
     /// 
-    [AddComponentMenu("Talos NPC/AssetBehaviourRunner")]
+    [AddComponentMenu("Talos NPC/AssetBehaviourRunner",-1)]
     public class AssetBehaviourRunner : DataBehaviourRunner
     {
         public BehaviourSystem System;

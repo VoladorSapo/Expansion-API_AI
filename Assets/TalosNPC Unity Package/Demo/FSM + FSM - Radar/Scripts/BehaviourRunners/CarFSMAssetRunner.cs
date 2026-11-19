@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/CarFSMAssetRunner")]
+
     public class CarFSMAssetRunner : AssetBehaviourRunner, ICar
     {
         Rigidbody _rb;

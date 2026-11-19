@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/RecipePaper")]
+
     public class RecipePaper : MonoBehaviour
     {
         [SerializeField] Text _recipeNameText;

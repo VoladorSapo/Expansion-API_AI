@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/ShowerSmartObject")]
+
     public class ShowerSmartObject : DirectSmartObject
     {
         [SerializeField] Transform _useTransform;

@@ -107,6 +107,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
                     createExpression.Add(new CodeCustomExpression(targetId));
                 }
                 m_CodeStatements.Add(pushStatement);
+                m_CodeStatements.Add(new CodeTest(pushPerceptionData.name,pushPerceptionData.pushPerception));
             }
 
             m_SystemData = systemData;

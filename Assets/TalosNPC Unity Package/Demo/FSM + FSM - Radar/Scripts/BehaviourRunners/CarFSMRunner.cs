@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/CarFSMRunner")]
+
     public class CarFSMRunner : BehaviourRunner, ICar
     {
         Rigidbody _rb;

@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PlayerFSMEditorRunner")]
+
     public class PlayerFSMEditorRunner : EditorBehaviourRunner
     {
         [SerializeField] private float minDistanceToChicken = 5;

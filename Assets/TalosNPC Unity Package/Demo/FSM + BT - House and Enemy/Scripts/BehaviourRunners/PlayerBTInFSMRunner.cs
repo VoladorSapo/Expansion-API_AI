@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PlayerBTInFSMRunner")]
+
     public class PlayerBTInFSMRunner : BehaviourRunner
     {
         [SerializeField] AudioClip keyFoundClip;

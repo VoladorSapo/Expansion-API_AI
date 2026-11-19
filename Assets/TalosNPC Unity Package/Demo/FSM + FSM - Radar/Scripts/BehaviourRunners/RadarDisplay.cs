@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/RadarDisplay")]
+
     public class RadarDisplay : MonoBehaviour
     {
         [SerializeField] Light _radarLight;

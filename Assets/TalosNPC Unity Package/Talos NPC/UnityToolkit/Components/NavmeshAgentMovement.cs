@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit
 {
+    [AddComponentMenu("Talos NPC/Components/NavmeshAgentMovement")]
+
     public class NavmeshAgentMovement : MonoBehaviour, IMovementComponent
     {
         [SerializeField] float speed;

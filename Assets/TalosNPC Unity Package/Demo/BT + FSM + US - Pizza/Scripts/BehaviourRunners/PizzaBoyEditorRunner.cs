@@ -8,6 +8,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PizzaBoyEditorRunner")]
+
     public class PizzaBoyEditorRunner : EditorBehaviourRunner
     {
         [SerializeField] Ingredient _pizzaMass;

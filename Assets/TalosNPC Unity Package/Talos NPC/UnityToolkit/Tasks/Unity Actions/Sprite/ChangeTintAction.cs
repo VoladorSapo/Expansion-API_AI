@@ -17,6 +17,8 @@ namespace TalosNPC.UnityToolkit
 
         [SerializeField] float time = 1f;
 
+        [SerializeField] bool succes = true;
+
         private Color _previousColor;
         private float _currentTime;
 
@@ -24,6 +26,7 @@ namespace TalosNPC.UnityToolkit
         {
             _previousColor = context.Renderer.Tint;
             context.Renderer.Tint = tintColor;
+            _currentTime = 0;
         }
 
         public override Status Update()
@@ -31,7 +34,9 @@ namespace TalosNPC.UnityToolkit
             _currentTime += Time.deltaTime;
             if (_currentTime > time)
             {
+                if(succes)
                 return Status.Success;
+                else return Status.Failure;
             }
             else
             {
@@ -58,6 +63,35 @@ namespace TalosNPC.UnityToolkit
             else
             {
                 return $"Change renderer tint color to {color}";
+            }
+        }
+    }
+
+    public class SuccesFailAction : UnityAction
+    {
+
+        [SerializeField] float time = 1f;
+
+        [SerializeField] bool succes = true;
+        private float _currentTime;
+
+        public override void Start()
+        {
+            _currentTime = 0;
+        }
+
+        public override Status Update()
+        {
+            _currentTime += Time.deltaTime;
+            if (_currentTime > time)
+            {
+                if (succes)
+                    return Status.Success;
+                else return Status.Failure;
+            }
+            else
+            {
+                return Status.Running;
             }
         }
     }

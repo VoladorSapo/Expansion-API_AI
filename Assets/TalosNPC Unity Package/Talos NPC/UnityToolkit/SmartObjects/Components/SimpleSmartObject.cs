@@ -8,6 +8,8 @@ namespace TalosNPC.UnityToolkit
     /// <summary>
     /// Smart object that provide always the same interaction
     /// </summary>
+    [AddComponentMenu("Talos NPC/Smart Objects/SimpleSmartObject")]
+
     public class SimpleSmartObject : SmartObject
     {
         [SerializeField] SmartInteractionProvider interactionProvider;

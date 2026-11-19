@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+[AddComponentMenu("Talos NPC/Demos/SeatManager")]
+
 public class SeatManager : MonoBehaviour
 {
     public static SeatManager Instance { get; private set; }

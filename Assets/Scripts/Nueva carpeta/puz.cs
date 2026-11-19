@@ -1,19 +1,20 @@
+using TalosNPC.UnityToolkit;
 using UnityEngine;
 
 public class puz : MonoBehaviour
 {
 
     [SerializeField] Transform fire;
+    BehaviourRunner runner;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        runner = GetComponent<BehaviourRunner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
     public void Fuego()
     {
@@ -33,4 +34,6 @@ public class puz : MonoBehaviour
     {
       return  Vector3.Distance(transform.position,fire.position) < 10 ;
     }
+
+    
 }

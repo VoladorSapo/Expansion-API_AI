@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/ChickenFSMEditorRunner")]
+
     public class ChickenFSMEditorRunner : EditorBehaviourRunner
     {
         [SerializeField] Transform _target;

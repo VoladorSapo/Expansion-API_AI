@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/Pizza")]
+
     public class Pizza : MonoBehaviour
     {
         float _height;

@@ -2,6 +2,8 @@
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/RestarButtonNoKey")]
+
     public class RestarButtonNoKey : MonoBehaviour
     {
 

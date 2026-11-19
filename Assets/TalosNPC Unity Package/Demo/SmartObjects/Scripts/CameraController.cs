@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[AddComponentMenu("Talos NPC/Demos/CameraController")]
+
 public class CameraController : MonoBehaviour
 {
     [SerializeField] float _speed;

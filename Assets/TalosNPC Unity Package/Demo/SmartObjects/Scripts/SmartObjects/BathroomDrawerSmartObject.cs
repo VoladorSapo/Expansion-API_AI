@@ -7,6 +7,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/BathroomDrawerSmartObject")]
+
     public class BathroomDrawerSmartObject : DirectSmartObject
     {
         [SerializeField] ParticleSystem _particleSystem;

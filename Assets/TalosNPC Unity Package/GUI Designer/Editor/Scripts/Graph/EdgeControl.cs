@@ -12,6 +12,8 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.Graphs
         public VisualElement edgeNumberDiv, edgeStatusDiv;
         public Label edgeNumberLabel, edgeStatusLabel;
 
+        Status prevStatus = Status.None;
+
         public EdgeControl()
         {
             var edgeTagAsset = TalosNPCSettings.instance.GetLayoutAsset("Elements/edgetag.uxml");
@@ -27,6 +29,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.Graphs
             edgeStatusLabel = edgeTag.Q<Label>("edge-status-label");
 
             Add(edgeTag);
+
         }
 
         protected override void ComputeControlPoints()
@@ -75,16 +78,27 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.Graphs
 
         public void UpdateStatus(Status status)
         {
+
             edgeStatusLabel.text = status.ToString();
             edgeStatusLabel.style.color = status.ToColor();
             if (status == Status.None)
             {
-                edgeStatusDiv.Disable();
+                if (prevStatus == Status.None)
+                {
+                    edgeStatusDiv.Disable();
+                }
+                else
+                {
+                    edgeStatusLabel.text = prevStatus.ToString();
+                    UnityEngine.Debug.Log(edgeStatusLabel.style.fontSize);
+
+                }
             }
             else
             {
                 edgeStatusDiv.Enable();
             }
+            prevStatus = status;
         }
     }
 }

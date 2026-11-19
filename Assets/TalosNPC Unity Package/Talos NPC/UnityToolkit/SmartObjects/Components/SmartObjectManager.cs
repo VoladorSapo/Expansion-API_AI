@@ -8,6 +8,9 @@ namespace TalosNPC.UnityToolkit
     /// Singleton class to manage all Smart objects in the scene
     /// </summary>
     [DefaultExecutionOrder(-1)]
+
+    [AddComponentMenu("Talos NPC/Smart Objects/SmartObjectManager")]
+
     public class SmartObjectManager : MonoBehaviour
     {
         /// <summary>

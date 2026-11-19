@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PlayerBTInFSMEditorRunner")]
+
     public class PlayerBTInFSMEditorRunner : EditorBehaviourRunner
     {
         [SerializeField] AudioClip keyFoundClip;

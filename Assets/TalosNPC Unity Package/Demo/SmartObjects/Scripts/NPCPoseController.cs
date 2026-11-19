@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.AI;
 
+[AddComponentMenu("Talos NPC/Demos/NPCPoseController")]
+
 public class NPCPoseController : MonoBehaviour
 {
     private static readonly Vector3 k_SittingRot = new Vector3(-45, 0, 0);

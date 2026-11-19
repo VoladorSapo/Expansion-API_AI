@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+
+    [AddComponentMenu("Talos NPC/Demos/FishingBoyBTRunner")]
+
     public class FishingBoyBTRunner : BehaviourRunner
     {
         [SerializeField] GameObject _fishPrefab, _bootPrefab;

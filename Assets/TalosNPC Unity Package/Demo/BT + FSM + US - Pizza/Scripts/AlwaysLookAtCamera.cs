@@ -2,6 +2,8 @@
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/AlwaysLookAtCamera")]
+
     public class AlwaysLookAtCamera : MonoBehaviour
     {
 

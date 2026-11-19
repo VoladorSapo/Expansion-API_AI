@@ -8,6 +8,9 @@ namespace TalosNPC.UnityToolkit
     /// <summary>
     /// Smart object that contains a list of interactions, each one binded to a different need.
     /// </summary>
+
+    [AddComponentMenu("Talos NPC/Smart Objects/CompoundSmartObject")]
+
     public class CompoundSmartObject : SmartObject
     {
         [SerializeField] InteractionMap interactionMap;

@@ -1,11 +1,14 @@
+using System.Collections.Generic;
 using TalosNPC.Core;
 using TalosNPC.Core.Perceptions;
 using TalosNPC.StateMachines;
 using TalosNPC.UnityToolkit.GUIDesigner.Runtime;
-using System.Collections.Generic;
+using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/RadarFSMEditorRunner")]
+
     public class RadarFSMEditorRunner : EditorBehaviourRunner, IRadar
     {
         RadarDisplay _radarDisplay;

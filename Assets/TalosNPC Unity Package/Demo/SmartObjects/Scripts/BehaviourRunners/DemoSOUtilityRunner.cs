@@ -7,6 +7,7 @@ using TalosNPC.UtilitySystems;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+[AddComponentMenu("Talos NPC/Demos/DemoSOUtilityRunner")]
 
 public class DemoSOUtilityRunner : BehaviourRunner
 {

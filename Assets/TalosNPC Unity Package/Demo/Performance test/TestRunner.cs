@@ -5,6 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[AddComponentMenu("Talos NPC/Demos/TestRunner")]
+
 public class TestRunner : BehaviourRunner
 {
     protected override BehaviourGraph CreateGraph()

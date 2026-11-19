@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/KeyRotation")]
+
     public class KeyRotation : MonoBehaviour
     {
         public Toggle toggle;

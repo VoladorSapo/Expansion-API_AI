@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/PlayerFSMRunner")]
+
     public class PlayerFSMRunner : BehaviourRunner
     {
         #region variables
@@ -46,7 +48,6 @@ namespace TalosNPC.UnityToolkit.Demos
             
             // El orden de los elementos es importante: la transición moving-moving se activará antes que la transición idle-moving
             _click = new PushPerception(movingToMoving, idleToMoving);
-
             // La transición que pasan al estado "idle" se lanzan cuando la acción del estado anterior termine.
             fsm.CreateTransition("moving to idle", moving, idle, statusFlags: StatusFlags.Finished);
             fsm.CreateTransition("runaway to idle", flee, idle, statusFlags: StatusFlags.Finished);

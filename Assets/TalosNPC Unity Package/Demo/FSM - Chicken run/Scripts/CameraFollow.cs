@@ -2,6 +2,8 @@
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/CameraFollow")]
+
     public class CameraFollow : MonoBehaviour
     {
 

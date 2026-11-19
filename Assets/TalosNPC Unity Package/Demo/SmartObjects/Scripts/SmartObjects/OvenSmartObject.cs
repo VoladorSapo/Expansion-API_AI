@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/OvenSmartObject")]
+
     public class OvenSmartObject : DirectSmartObject
     {
         [SerializeField] float useTime = 3f;

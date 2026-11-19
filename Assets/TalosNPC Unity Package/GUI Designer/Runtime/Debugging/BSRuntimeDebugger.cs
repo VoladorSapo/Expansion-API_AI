@@ -8,6 +8,9 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
     /// <summary>
     /// Component used to debug a behaviour system created directly by code.
     /// </summary>   
+    /// 
+    [AddComponentMenu("Talos NPC/Runtime/BSRuntimeDebugger")]
+
     public class BSRuntimeDebugger : MonoBehaviour, IBehaviourSystem
     {
         [SerializeField] BSRuntimeEventHandler _eventHandler = new BSRuntimeEventHandler();

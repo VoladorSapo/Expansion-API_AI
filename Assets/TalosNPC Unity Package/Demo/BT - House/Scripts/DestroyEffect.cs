@@ -1,8 +1,9 @@
 ﻿namespace TalosNPC.UnityToolkit.Demos
 {
 	using UnityEngine;
+    [AddComponentMenu("Talos NPC/Demos/DestroyEffect")]
 
-	public class DestroyEffect : MonoBehaviour
+    public class DestroyEffect : MonoBehaviour
 	{
 
 		void Update()

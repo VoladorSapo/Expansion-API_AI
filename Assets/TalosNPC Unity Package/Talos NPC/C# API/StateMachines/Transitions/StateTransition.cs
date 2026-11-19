@@ -40,9 +40,9 @@ namespace TalosNPC.StateMachines
             if (children.Count > 0 && children[0] is State to)
                 _targetState = to;
             else
-                throw new ArgumentException();
+                UnityEngine.Debug.LogWarning("FSM StateTransition is not connected to any State.");
         }
-    public  StateTransition()
+        public  StateTransition()
         {
          StatusFlags = (StatusFlags)-1;
          //StatusFlags = StatusFlags.Failure | StatusFlags.Finished | StatusFlags.Running | StatusFlags.Paused | StatusFlags.Unfinished | StatusFlags.Active | StatusFlags.Success;

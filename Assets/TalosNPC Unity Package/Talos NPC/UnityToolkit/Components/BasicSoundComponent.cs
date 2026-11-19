@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit
 {
+    [AddComponentMenu("Talos NPC/Components/BasicSoundComponent")]
+
     public class BasicSoundComponent : MonoBehaviour, ISoundComponent
     {
         [SerializeField] private AudioSource m_AudioSource;

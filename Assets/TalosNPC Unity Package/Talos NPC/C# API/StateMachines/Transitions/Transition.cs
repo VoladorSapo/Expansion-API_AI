@@ -6,6 +6,7 @@ namespace TalosNPC.StateMachines
     using Core;
     using Core.Actions;
     using Core.Perceptions;
+    using System.Diagnostics;
 
     /// <summary>
     /// Base class for transitions in fsm.
@@ -101,7 +102,8 @@ namespace TalosNPC.StateMachines
             if (parents.Count > 0 && parents[0] is State from)
                 _sourceState = from;
             else
-                throw new ArgumentException();
+                UnityEngine.Debug.LogWarning("FSM Transition is not connected to any State.");
+                //throw new ArgumentException();
         }
 
         public override object Clone()

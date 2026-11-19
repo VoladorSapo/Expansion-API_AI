@@ -6,6 +6,8 @@ namespace TalosNPC.UnityToolkit.Demos
     using SmartObjects;
     using Core.Actions;
 
+    [AddComponentMenu("Talos NPC/Demos/DrinkSmartObject")]
+
     public class DrinkSmartObject : SmartObject
     {
         [SerializeField] FridgeSmartObject _fridge;

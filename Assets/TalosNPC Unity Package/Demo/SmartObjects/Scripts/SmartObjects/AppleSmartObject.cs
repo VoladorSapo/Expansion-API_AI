@@ -5,6 +5,8 @@ namespace TalosNPC.UnityToolkit.Demos
 {
     using Core.Actions;
     using SmartObjects;
+    [AddComponentMenu("Talos NPC/Demos/AppleSmartObject")]
+
 
     public class AppleSmartObject : SmartObject
     {

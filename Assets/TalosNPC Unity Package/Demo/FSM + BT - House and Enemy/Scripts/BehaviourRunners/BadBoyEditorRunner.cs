@@ -7,7 +7,10 @@ using System.Linq;
 using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
+
 {
+    [AddComponentMenu("Talos NPC/Demos/BadBoyEditorRunner")]
+
     public class BadBoyEditorRunner : EditorBehaviourRunner
     {
         public Transform[] routePoints;

@@ -481,4 +481,24 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
             codeWriter.AppendLine("");
         }
     }
+
+    public class CodeTest : CodeStatement
+    {
+        private string name;
+        private PushPerception pushPerception;
+
+        public CodeTest(string name, PushPerception pushPerception)
+        {
+            this.name = name;
+            this.pushPerception = pushPerception;
+        }
+
+        public override void GenerateCode(CodeWriter writer, CodeGenerationOptions options)
+        {
+            writer.AppendLine("Sopa");
+            writer.AppendLine("");
+
+
+        }
+    }
 }

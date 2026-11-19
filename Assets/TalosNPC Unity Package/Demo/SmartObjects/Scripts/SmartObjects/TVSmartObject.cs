@@ -8,6 +8,8 @@ namespace TalosNPC.UnityToolkit.Demos
     using UnityToolkit;
 
 
+    [AddComponentMenu("Talos NPC/Demos/TVSmartObject")]
+
     public class TVSmartObject : SmartObject
     {
         [SerializeField] float maxDistance;

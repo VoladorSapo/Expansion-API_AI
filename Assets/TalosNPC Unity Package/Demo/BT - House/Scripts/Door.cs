@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/Door")]
+
     public class Door : MonoBehaviour
     {
         [SerializeField] Toggle toggle;

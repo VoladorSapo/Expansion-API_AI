@@ -6,6 +6,8 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
     using Core.Actions;
     using Framework;
 
+    [AddComponentMenu("Talos NPC/Runtime/AssetSmartInteractionProvider")]
+
     public class AssetSmartInteractionProvider : DataSmartInteractionProvider
     {
         [SerializeField] BehaviourSystem _behaviourSystem;

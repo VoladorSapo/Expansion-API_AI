@@ -6,6 +6,9 @@ namespace TalosNPC.UnityToolkit
     /// <summary>
     /// Component that looks for nearby SmartObjects
     /// </summary>
+    /// 
+    [AddComponentMenu("Talos NPC/Smart Objects/SmartObjectLocator")]
+
     public class SmartObjectLocator : MonoBehaviour
     {
         /// <summary>

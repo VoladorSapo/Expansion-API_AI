@@ -7,6 +7,8 @@ namespace TalosNPC.UnityToolkit.Demos
     using SmartObjects;
     using UnityToolkit;
 
+    [AddComponentMenu("Talos NPC/Demos/BookShelfSmartObject")]
+
     public class BookShelfSmartObject : DirectSmartObject
     {
         public override bool ValidateAgent(SmartAgent agent)

@@ -1,7 +1,10 @@
 using TalosNPC.BehaviourTrees;
 using TalosNPC.Core;
-using TalosNPC.UnityToolkit.GUIDesigner.Runtime;
 using TalosNPC.UnityToolkit;
+using TalosNPC.UnityToolkit.GUIDesigner.Runtime;
+using UnityEngine;
+
+[AddComponentMenu("Talos NPC/Demos/DemoSORunner")]
 
 public class DemoSORunner : BehaviourRunner
 {

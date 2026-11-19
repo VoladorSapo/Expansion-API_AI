@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/BoyBTRunner")]
+
     public class BoyBTRunner : BehaviourRunner
     {
         Door _door;

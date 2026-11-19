@@ -8,6 +8,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/ChickenFSMRunner")]
+
     public class ChickenFSMRunner : BehaviourRunner
     {
         #region variables

@@ -7,6 +7,8 @@ using UnityEngine.AI;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/BedSmartObject")]
+
     public class BedSmartObject : DirectSmartObject
     {
         [SerializeField] Transform _useTransform;

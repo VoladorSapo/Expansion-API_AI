@@ -4,6 +4,8 @@ namespace TalosNPC.UnityToolkit.Demos
 {
     [CreateAssetMenu(menuName = "TalosNPC/Demos/Pizza/Ingredient", fileName = "ingredient")]
 
+    [AddComponentMenu("Talos NPC/Demos/Ingredient")]
+
     public class Ingredient : ScriptableObject
     {
         public string Name;

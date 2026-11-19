@@ -3,6 +3,8 @@ using UnityEngine.UI;
 
 namespace TalosNPC.UnityToolkit
 {
+    [AddComponentMenu("Talos NPC/Components/GUISpriteComponent")]
+
     public class GUISpriteComponent : MonoBehaviour, IRendererComponent
     {
         [SerializeField] Image image;

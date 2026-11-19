@@ -1,5 +1,7 @@
 using UnityEngine;
 
+[AddComponentMenu("Talos NPC/Demos/WallTriggerController")]
+
 public class WallTriggerController : MonoBehaviour
 {
     [SerializeField] GameObject _walls;

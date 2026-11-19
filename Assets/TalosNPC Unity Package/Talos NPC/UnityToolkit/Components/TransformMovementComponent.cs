@@ -2,6 +2,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit
 {
+    [AddComponentMenu("Talos NPC/Components/TransformMovementComponent")]
+
     public class TransformMovementComponent : MonoBehaviour, IMovementComponent
     {
         [SerializeField] float speed;

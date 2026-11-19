@@ -15,7 +15,7 @@ public class changeScene : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.C)){
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(scene);
         }
     }
 }

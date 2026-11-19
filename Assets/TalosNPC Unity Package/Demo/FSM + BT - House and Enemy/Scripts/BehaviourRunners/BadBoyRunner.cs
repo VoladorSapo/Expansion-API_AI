@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace TalosNPC.UnityToolkit.Demos
 {
+    [AddComponentMenu("Talos NPC/Demos/BadBoyRunner")]
+
     public class BadBoyRunner : BehaviourRunner
     {
         public Transform[] routePoints;

@@ -24,6 +24,8 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
         /// </summary>
         public string methodName;
 
+
+
         public object Clone()
         {
             return MemberwiseClone();
@@ -31,15 +33,19 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
 
         public Delegate GetDelegate(Component defaultComponent, Type[] arguments, Type delegateType)
         {
-            if (string.IsNullOrWhiteSpace(methodName) || defaultComponent == null) return null;
+            if (string.IsNullOrWhiteSpace(methodName) || defaultComponent == null)
+            {
+                return null;
+            }
             if (!delegateType.IsSubclassOf(typeof(Delegate))) return null;
 
             Component component = string.IsNullOrWhiteSpace(componentName) ? defaultComponent : defaultComponent.gameObject.GetComponent(componentName);
+            Action error = () => Debug.LogError($"No valid action found for method {methodName} in component {componentName}", defaultComponent.gameObject);
 
             if (component == null)
             {
                 Debug.LogWarning($"BUILD ERROR: The specified component ({componentName}) does not exist or is not attached to runner.", defaultComponent.gameObject);
-                return null;
+                return error;
             }
 
             MethodInfo methodInfo = component.GetType().GetMethod(methodName, arguments);
@@ -47,18 +53,22 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
             if (methodInfo == null)
             {
                 Debug.LogWarning($"BUILD ERROR: The method called {methodName} was not found. Can't create a delegate.", defaultComponent.gameObject);
-                return null;
+
+            
+                return error;
             }
 
             try
             {
+                Debug.Log("create delegate");
+
                 var del = methodInfo.CreateDelegate(delegateType, component);
                 return del;
             }
             catch
             {
                 Debug.LogWarning("BUILD ERROR: The method don't match the required parameters. Can't create a delegate.", defaultComponent.gameObject);
-                return null;
+                return error;
             }
             
         }
@@ -79,16 +89,18 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
     {
         protected virtual Type[] FunctionArgs => new Type[0];
        
-        public T CreateDelegate(Component runner)
+        public T CreateDelegate(Component runner, T actionIfEmpty = null)
         {
             var del = GetDelegate(runner, FunctionArgs, typeof(T));
             if(del is T typedDelegate)
             {
+
                 return typedDelegate;
             }
             else
             {
-                return null;
+
+                return actionIfEmpty;
             }
         }
     }
@@ -115,5 +127,18 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Framework
     [Serializable]
     public class ContextualSerializedBoolFunction : SerializedContextMethod<Func<bool>>
     {
+    }
+
+    public class NonExistentActionException : Exception
+    {
+      public  string componentName;
+      public  string methodName;
+        public NonExistentActionException(string message, string componentName, string methodName)
+        { 
+        this.componentName = componentName;
+            this.methodName = methodName;
+        }
+      
+
     }
 }

@@ -3,6 +3,8 @@ using UnityEngine;
 namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
 {
     using Framework;
+    [AddComponentMenu("Talos NPC/Runtime/EditorSmartInteractionProvider")]
+
 
     public class EditorSmartInteractionProvider : DataSmartInteractionProvider, IBehaviourSystem
     {

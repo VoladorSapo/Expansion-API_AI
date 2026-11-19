@@ -2,7 +2,8 @@
 
 namespace TalosNPC.UnityToolkit.Demos
 {
-	public class csLightControl : MonoBehaviour
+    [AddComponentMenu("Talos NPC/Demos/csLightControl")]
+    public class csLightControl : MonoBehaviour
 	{
 
 		public Light _lihgt;
