@@ -55,6 +55,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Runtime
 
             BSBuildingResults buildedData = _executionSystem.BuildSystem(this);
 
+            pushPerceptionDictionary = buildedData.PushPerceptionMap;
             ModifyGraphs(buildedData.GraphMap, buildedData.PushPerceptionMap);
             return buildedData.MainGraph;
         }

@@ -40,7 +40,7 @@ namespace TalosNPC.UnityToolkit
         /// Component used fot the agent 
         /// </summary>
 
-        Dictionary<string, float> m_Needs;
+         Dictionary<string, float> m_Needs;
 
         private void Awake()
         {

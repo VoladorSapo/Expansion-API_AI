@@ -92,6 +92,16 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
                 codeGenerator.GenerateCode(this);
             }
 
+            if(systemData.pushPerceptions != null && systemData.pushPerceptions.Count > 0)
+            {
+                
+                CodeAssignationStatement assignationStatement = new CodeAssignationStatement();
+                assignationStatement.LeftExpression = new CodeMethodReferenceExpression("pushPerceptionDictionary");
+                var createExpression = new CodeObjectCreationExpression(typeof(Dictionary<string, PushPerception>));
+                assignationStatement.RightExpression = createExpression;
+                m_CodeStatements.Add(assignationStatement);
+            }
+
             foreach (PushPerceptionData pushPerceptionData in systemData.pushPerceptions)
             {
                 var id = GenerateIdentifier(pushPerceptionData.name);
@@ -107,7 +117,7 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
                     createExpression.Add(new CodeCustomExpression(targetId));
                 }
                 m_CodeStatements.Add(pushStatement);
-                m_CodeStatements.Add(new CodeTest(pushPerceptionData.name,pushPerceptionData.pushPerception));
+                m_CodeStatements.Add(new CodePushPerception(pushPerceptionData.name, pushStatement.LeftExpression));
             }
 
             m_SystemData = systemData;

@@ -240,7 +240,28 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
 
         public override void GenerateCode(CodeWriter writer, CodeGenerationOptions options)
         {
-            writer.Append($"new {Type.Name}(");
+            writer.Append($"new {Type.Name.Split('`')[0]}");
+            Type[] arguments = Type.GetGenericArguments();
+            if (arguments != null && arguments.Length > 0)
+            {
+                writer.Append("<");
+                bool first = true;
+                foreach (var arg in arguments)
+                {
+                    if (first)
+                    {
+                        first = false;
+                    }
+                    else
+                    {
+                        writer.Append($",");
+
+                    }
+                    writer.Append(arg.Name);
+                }
+                writer.Append(">");
+            }
+            writer.Append("(");
 
             for (int i = 0; i < parameters.Count; i++)
             {
@@ -497,6 +518,24 @@ namespace TalosNPC.UnityToolkit.GUIDesigner.Editor.CodeGenerator
         {
             writer.AppendLine("Sopa");
             writer.AppendLine("");
+
+
+        }
+    }
+
+    public class CodePushPerception : CodeStatement
+    {
+        private string name;
+        private CodeMethodReferenceExpression pushPerception;
+        public CodePushPerception(string name, CodeExpression pushPerception)
+        {
+            this.name = name;
+            this.pushPerception = (CodeMethodReferenceExpression)pushPerception;
+        }
+
+        public override void GenerateCode(CodeWriter writer, CodeGenerationOptions options)
+        {
+            writer.AppendLine(@$"pushPerceptionDictionary.Add(@""{name}"",{pushPerception.memberName});");
 
 
         }

@@ -23,6 +23,8 @@ namespace TalosNPC.UnityToolkit
 
         BehaviourGraph _executionGraph;
 
+        protected Dictionary<string, PushPerception> pushPerceptionDictionary;
+
 
         /// <summary>
         /// Override this method to set the context that the graph will use.
@@ -63,7 +65,7 @@ namespace TalosNPC.UnityToolkit
         /// </summary>
         protected virtual void Init()
         {
-            UnityEngine.Debug.Log("Init Runner"+name);
+            UnityEngine.Debug.Log("Init Runner" + name);
             _executionGraph = CreateGraph();
 
             if (_executionGraph != null)
@@ -99,7 +101,7 @@ namespace TalosNPC.UnityToolkit
         {
             if (_executionGraph != null)
             {
-                
+
                 if (_executionGraph.Status != Status.Running) return;
 
                 _executionGraph.Update();
@@ -114,7 +116,7 @@ namespace TalosNPC.UnityToolkit
                     else
                     {
                         _executionGraph.Stop();
-                        
+
                     }
                 }
             }
@@ -173,6 +175,22 @@ namespace TalosNPC.UnityToolkit
             }
         }
 
-       
+        public PushPerception getPushPerception(string pushPerceptionName)
+        {
+            if (pushPerceptionDictionary.TryGetValue(pushPerceptionName, out var pushPerception))
+            {
+                return pushPerception;
+            }
+            return null;
+        }
+
+        public void firePushPerception(string pushPerceptionName)
+        {
+            PushPerception pushPercetion = getPushPerception(pushPerceptionName);
+            if (pushPercetion != null)
+            {
+                pushPercetion.Fire();
+            }
+        }
     }
 }

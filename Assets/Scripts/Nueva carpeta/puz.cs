@@ -15,6 +15,9 @@ public class puz : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.P)){
+            runner.firePushPerception("push");
+        }
     }
     public void Fuego()
     {
